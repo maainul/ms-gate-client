@@ -11,7 +11,7 @@ const HomePage = () => {
 
     const [vehicles, setVehicles] = useState([])
     const [error, setError] = useState(null)
-
+    console.log(error)
     console.log(vehicles)
 
     useEffect(() => {

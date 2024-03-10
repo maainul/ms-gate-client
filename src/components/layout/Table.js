@@ -23,9 +23,9 @@ const Table = ({ data }) => {
                     {
                         data.length > 0 ? (
                             data.map(values => (
-                                <tr className="border border-gray-200" key={values._id}>
-                                    <td scope="row" className="px-6">
-                                        <img src={car} alt='default image' className='rounded-full w-24 h-24 ' />
+                                <th className="border border-gray-200" key={values._id}>
+                                    <td className="px-6">
+                                        <img src={car} alt='default' className='rounded-full w-24 h-24 ' />
                                     </td>
                                     <td className="px-6">
                                         {values.vehicle.numberPlate}-{values.vehicle.name} - {values.vehicle.color}- {values.vehicle.model}
@@ -62,7 +62,7 @@ const Table = ({ data }) => {
                                         <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
                                         <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
                                     </td>
-                                </tr>
+                                </th>
                             ))
                         ) : (
                             <p className='h-12 flex justify-center items-center font-semibold text-sm'>No Data Found.....</p>
