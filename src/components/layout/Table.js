@@ -23,24 +23,24 @@ const Table = ({ data }) => {
                     {
                         data.length > 0 ? (
                             data.map(values => (
-                                <tr className="border-b border-gray-300" key={values._id}>
-                                    <td scope="row" className="px-6 py-4">
+                                <tr className="border border-gray-200" key={values._id}>
+                                    <td scope="row" className="px-6">
                                         <img src={car} alt='default image' className='rounded-full w-24 h-24 ' />
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6">
                                         {values.vehicle.numberPlate}-{values.vehicle.name} - {values.vehicle.color}- {values.vehicle.model}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6">
                                         {values.drivers.map(driver => (
                                             <div key={driver._id}>
                                                 <p>{driver.name} - {driver.phoneNumber}</p>
                                             </div>
                                         ))}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6">
                                         {values.visitors.map(visitor => (
                                             <>
-                                                <div className='border-b border-gray-200 py-1'>
+                                                <div className='py-1'>
                                                     {visitor.referencePeople.map(vis => (
                                                         <div key={vis._id}>
                                                             <p>{vis.name}</p>
@@ -54,7 +54,7 @@ const Table = ({ data }) => {
                                             </>
                                         ))}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6">
                                         21/01/2024
                                     </td>
                                     <td className="px-6 py-4 flex gap-5">
