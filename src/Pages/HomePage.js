@@ -29,7 +29,7 @@ const HomePage = () => {
     return (
 
         <div>
-            <div class="flex h-screen bg-gray-100 text-gray-500">
+            <div class="flex min-h-screen bg-gray-100 text-gray-500">
 
                 {/* Sidebar OR Left Bar of Index Page */}
                 <div class="w-64 bg-white">
@@ -52,16 +52,12 @@ const HomePage = () => {
                     {/* Tables of Landing Page */}
                     <div class="relative overflow-x-auto p-10">
                         <div class="relative overflow-x-auto shadow-md bg-white">
-                            <Table />
+                            <Table data={vehicles} />
                         </div>
                     </div>
 
                 </div>
             </div>
-
-            {/* <h1>Mainul Hasan</h1>
-            {error && <p>Please Start Server</p>}
-            <p>{JSON.stringify(vehicles)}</p> */}
         </div>
     )
 }

@@ -1,133 +1,72 @@
 
 import { Link } from 'react-router-dom';
+import car from '../../car.jpg'
 
-const Table = () => {
+
+const Table = ({ data }) => {
+
     return (
         <div >
             {/* <h1 classNameName="p-3 text-green-500 font-bold text-lg">User List</h1> */}
             <table className="w-full text-sm text-left rtl:text-right">
                 <thead className="text-xs text-white uppercase bg-blue-500">
                     <tr>
-
-                        <th scope="col" className="px-6 py-3">
-                            Product name
-                        </th>
-
-                        <th scope="col" className="px-6 py-3">
-                            Color
-                        </th>
-
-                        <th scope="col" className="px-6 py-3">
-                            Category
-                        </th>
-
-                        <th scope="col" className="px-6 py-3">
-                            Category
-                        </th>
-
-                        <th scope="col" className="px-6 py-3">
-                            Price
-                        </th>
-
-                        <th scope="col" className="px-6 py-3">
-                            Action
-                        </th>
-
+                        <th scope="col" className="px-6 py-3">Image</th>
+                        <th scope="col" className="px-6 py-3">Vehicle Info</th>
+                        <th scope="col" className="px-6 py-3">Driver Info</th>
+                        <th scope="col" className="px-6 py-3">Visitor Info</th>
+                        <th scope="col" className="px-6 py-3">Last Visit Date</th>
+                        <th scope="col" className="px-6 py-3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="border-b border-gray-300">
-                        <th scope="row" className="font-medium whitespace-nowrap px-6 py-4">
-                            Apple MacBook Pro 17
-                        </th>
-                        <td className="px-6 py-4">
-                            Silver
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="px-6 py-4">
-                            $2999
-                        </td>
-                        <td className="px-6 py-4 flex gap-5">
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
-                        </td>
-                    </tr>
+                    {
+                        data.length > 0 ? (
+                            data.map(values => (
+                                <tr className="border-b border-gray-300" key={values._id}>
+                                    <td scope="row" className="px-6 py-4">
+                                        <img src={car} alt='default image' className='rounded-full w-24 h-24 ' />
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {values.vehicle.numberPlate}-{values.vehicle.name} - {values.vehicle.color}- {values.vehicle.model}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {values.drivers.map(driver => (
+                                            <div key={driver._id}>
+                                                <p>{driver.name} - {driver.phoneNumber}</p>
+                                            </div>
+                                        ))}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {values.visitors.map(visitor => (
+                                            <>
+                                                <div className='border-b border-gray-200 py-1'>
+                                                    {visitor.referencePeople.map(vis => (
+                                                        <div key={vis._id}>
+                                                            <p>{vis.name}</p>
+                                                        </div>
+                                                    ))}
 
-                    <tr className="border-b border-gray-300 ">
-                        <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap text-graay-400">
-                            Apple MacBook Pro 17
-                        </th>
-                        <td className="px-6 py-4">
-                            Silver
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="px-6 py-4">
-                            $2999
-                        </td>
-                        <td className="px-6 py-4 flex gap-5">
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
-                        </td>
-                    </tr>
-
-                    <tr className="border-b border-gray-300 ">
-                        <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">
-                            Apple MacBook Pro 17
-                        </th>
-                        <td className="px-6 py-4">
-                            Silver
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="px-6 py-4">
-                            $2999
-                        </td>
-                        <td className="px-6 py-4 flex gap-5">
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
-                        </td>
-                    </tr>
-
-                    <tr className="border-b border-gray-300 ">
-                        <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">
-                            Apple MacBook Pro 17
-                        </th>
-                        <td className="px-6 py-4">
-                            Silver
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td className="px-6 py-4">
-                            $2999
-                        </td>
-                        <td className="px-6 py-4 flex gap-5">
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
-                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
-                        </td>
-                    </tr>
-
+                                                    <div key={visitor._id}>
+                                                        <p>{visitor.numberOfPassengers} - {visitor.purpose}</p>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        ))}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        21/01/2024
+                                    </td>
+                                    <td className="px-6 py-4 flex gap-5">
+                                        <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
+                                        <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
+                                        <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <p className='h-12 flex justify-center items-center font-semibold text-sm'>No Data Found.....</p>
+                        )}
                 </tbody>
             </table>
         </div>
