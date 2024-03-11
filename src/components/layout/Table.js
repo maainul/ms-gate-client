@@ -23,7 +23,7 @@ const Table = ({ data }) => {
                     {
                         data.length > 0 ? (
                             data.map(values => (
-                                <th className="border border-gray-200" key={values._id}>
+                                <tr className="border border-gray-200" key={values._id}>
                                     <td className="px-6">
                                         <img src={car} alt='default' className='rounded-full w-24 h-24 ' />
                                     </td>
@@ -32,7 +32,7 @@ const Table = ({ data }) => {
                                     </td>
                                     <td className="px-6">
                                         {values.drivers.map(driver => (
-                                            <div key={driver._id}>
+                                            <div>
                                                 <p>{driver.name} - {driver.phoneNumber}</p>
                                             </div>
                                         ))}
@@ -42,12 +42,12 @@ const Table = ({ data }) => {
                                             <>
                                                 <div className='py-1'>
                                                     {visitor.referencePeople.map(vis => (
-                                                        <div key={vis._id}>
+                                                        <div>
                                                             <p>{vis.name}</p>
                                                         </div>
                                                     ))}
 
-                                                    <div key={visitor._id}>
+                                                    <div>
                                                         <p>{visitor.numberOfPassengers} - {visitor.purpose}</p>
                                                     </div>
                                                 </div>
@@ -62,7 +62,7 @@ const Table = ({ data }) => {
                                         <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
                                         <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
                                     </td>
-                                </th>
+                                </tr>
                             ))
                         ) : (
                             <p className='h-12 flex justify-center items-center font-semibold text-sm'>No Data Found.....</p>
