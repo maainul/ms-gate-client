@@ -1,75 +1,100 @@
 
 import { Link } from 'react-router-dom';
 import car from '../../car.jpg'
-
+import leftArrow from '../../angles-left-solid.svg'
+import rightArrow from '../../angles-right-solid.svg'
 
 const Table = ({ data }) => {
 
     return (
-        <div >
-            {/* <h1 classNameName="p-3 text-green-500 font-bold text-lg">User List</h1> */}
-            <table className="w-full text-sm text-left rtl:text-right">
-                <thead className="text-xs text-white uppercase bg-blue-500">
-                    <tr>
-                        <th scope="col" className="px-6 py-3">Image</th>
-                        <th scope="col" className="px-6 py-3">Vehicle Info</th>
-                        <th scope="col" className="px-6 py-3">Driver Info</th>
-                        <th scope="col" className="px-6 py-3">Visitor Info</th>
-                        <th scope="col" className="px-6 py-3">Last Visit Date</th>
-                        <th scope="col" className="px-6 py-3">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        data.length > 0 ? (
-                            data.map(values => (
-                                <tr className="border border-gray-200" key={values._id}>
-                                    <td className="px-6">
-                                        <img src={car} alt='default' className='rounded-full w-24 h-24 ' />
-                                    </td>
-                                    <td className="px-6">
-                                        {values.vehicle.numberPlate}-{values.vehicle.name} - {values.vehicle.color}- {values.vehicle.model}
-                                    </td>
-                                    <td className="px-6">
-                                        {values.drivers.map(driver => (
-                                            <div>
-                                                <p>{driver.name} - {driver.phoneNumber}</p>
-                                            </div>
-                                        ))}
-                                    </td>
-                                    <td className="px-6">
-                                        {values.visitors.map(visitor => (
-                                            <>
-                                                <div className='py-1'>
-                                                    {visitor.referencePeople.map(vis => (
-                                                        <div>
-                                                            <p>{vis.name}</p>
-                                                        </div>
-                                                    ))}
+        <>
 
-                                                    <div>
-                                                        <p>{visitor.numberOfPassengers} - {visitor.purpose}</p>
-                                                    </div>
+            <div >
+                {/* <h1 classNameName="p-3 text-green-500 font-bold text-lg">User List</h1> */}
+                <table className="w-full text-sm text-left rtl:text-right">
+                    <thead className="text-xs text-white uppercase bg-blue-500">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">Image</th>
+                            <th scope="col" className="px-6 py-3">Vehicle Info</th>
+                            <th scope="col" className="px-6 py-3">Driver Info</th>
+                            <th scope="col" className="px-6 py-3">Visitor Info</th>
+                            <th scope="col" className="px-6 py-3">Last Visit Date</th>
+                            <th scope="col" className="px-6 py-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            data.length > 0 ? (
+                                data.map(values => (
+                                    <tr className="border border-gray-200" key={values._id}>
+                                        <td className="px-6">
+                                            <img src={car} alt='default' className='rounded-full w-24 h-24 ' />
+                                        </td>
+                                        <td className="px-6">
+                                            {values.vehicle.numberPlate}-{values.vehicle.name} - {values.vehicle.color}- {values.vehicle.model}
+                                        </td>
+                                        <td className="px-6">
+                                            {values.drivers.map(driver => (
+                                                <div>
+                                                    <p>{driver.name} - {driver.phoneNumber}</p>
                                                 </div>
-                                            </>
-                                        ))}
-                                    </td>
-                                    <td className="px-6">
-                                        21/01/2024
-                                    </td>
-                                    <td className="px-6 py-4 flex gap-5">
-                                        <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
-                                        <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
-                                        <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
-                                    </td>
-                                </tr>
-                            ))
-                        ) : (
-                            <p className='h-12 flex justify-center items-center font-semibold text-sm'>No Data Found.....</p>
-                        )}
-                </tbody>
-            </table>
-        </div>
+                                            ))}
+                                        </td>
+                                        <td className="px-6">
+                                            {values.visitors.map(visitor => (
+                                                <>
+                                                    <div className='py-1'>
+                                                        {visitor.referencePeople.map(vis => (
+                                                            <div>
+                                                                <p>{vis.name}</p>
+                                                            </div>
+                                                        ))}
+
+                                                        <div>
+                                                            <p>{visitor.numberOfPassengers} - {visitor.purpose}</p>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            ))}
+                                        </td>
+                                        <td className="px-6">
+                                            21/01/2024
+                                        </td>
+                                        <td className="px-6 py-4 flex gap-5">
+                                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
+                                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
+                                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <p className='h-12 flex justify-center items-center font-semibold text-sm'>No Data Found.....</p>
+                            )}
+                    </tbody>
+                </table>
+            </div>
+
+
+            {/* Pagination */}
+            <div className='flex justify-between items-center'>
+                <div className='text-sm font-bold text-gray-400 px-6 py-3'>5 of 11 Pages</div>
+                <div className='text text-center p-5 flex justify-center items-center'>
+                    <span className='bg-blue-400 text-white px-3 py-1 rounded-sm font-bold text-sm m-[2px]' >
+                        <img src={leftArrow} alt='left arrow pagination' className='w-4 h-5' />
+                    </span>
+
+                    <span className='bg-blue-400 text-white px-3 py-1 rounded-sm font-bold text-sm m-[2px]' >1</span>
+                    <span className='bg-blue-400 text-white px-3 py-1 rounded-sm font-bold text-sm m-[2px]' >2</span>
+                    <span className='bg-blue-400 text-white px-3 py-1 rounded-sm font-bold text-sm m-[2px]'>3</span>
+                    <span className='bg-blue-400 text-white px-3 py-1 rounded-sm font-bold text-sm m-[2px]'>4</span>
+
+                    <span className='bg-blue-400 text-white px-3 py-1 rounded-sm font-bold text-sm m-[2px]' >
+                        <img src={rightArrow} alt='left arrow pagination' className='w-4 h-5' />
+                    </span>
+
+                </div>
+            </div>
+        </>
     )
 }
 

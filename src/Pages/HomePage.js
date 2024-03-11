@@ -6,7 +6,6 @@ import Cards from './../components/layout/Cards';
 import Table from './../components/layout/Table';
 
 
-
 const HomePage = () => {
 
     const [vehicles, setVehicles] = useState([])
