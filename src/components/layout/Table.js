@@ -56,14 +56,15 @@ const Table = ({ data }) => {
                                                 </>
                                             ))}
                                         </td>
-                                        <td className="px-6">
+                                        <td className="px-6 ">
                                             21/01/2024
                                         </td>
-                                        <td className="px-6 py-4 flex gap-5">
-                                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
-                                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</Link>
-                                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</Link>
+                                         <td className="px-6">
+                                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">Edit</Link>
+                                             <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">View</Link>
+                                             <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">Delete</Link>
                                         </td>
+                                       
                                     </tr>
                                 ))
                             ) : (
