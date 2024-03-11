@@ -77,3 +77,4 @@ const HomePage = () => {
 
 export default HomePage
 
+// https://chat.openai.com/c/ab13c059-a6ec-4eac-bf12-4644075b370f
