@@ -20,7 +20,7 @@ const HomePage = () => {
     const [totalVehicles, setTotalVehicles] = useState(0)
     const [page, setPage] = useState('1')
     const [limit, setLimit] = useState('5')
-
+    console.log(setLimit) // For Successful build. Eita na dile netlify te build hoi na
 
 
     useEffect(() => {
@@ -53,7 +53,7 @@ const HomePage = () => {
                 <div class="w-64 bg-white">
                     <Sidebar />
                 </div>
-
+                {error && <>{error}</>}
                 <div class="flex-grow w-full">
 
                     {/* Heading of Process */}
