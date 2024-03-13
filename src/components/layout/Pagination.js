@@ -1,5 +1,6 @@
-import leftArrow from '../../angles-left-solid.svg'
-import rightArrow from '../../angles-right-solid.svg'
+import leftArrow from '../../img/angles-left-solid.svg'
+import rightArrow from '../../img/angles-right-solid.svg'
+
 
 const Pagination = ({ numberOfPage, setPage, page, totalVehicles }) => {
     const pages = []

@@ -1,13 +1,10 @@
 
 import { Link } from 'react-router-dom';
-import car from '../../car.jpg'
+import car from '../../img/car.jpg'
 
-const Table = ({ data }) => {
-
-
+const Table = ({ data}) => {
     return (
         <>
-
             <div >
                 {/* <h1 classNameName="p-3 text-green-500 font-bold text-lg">User List</h1> */}
                 <table className="w-full text-sm text-left rtl:text-right">
