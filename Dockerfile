@@ -1,34 +1,13 @@
-# Use official Node.js image as the base image
-FROM node:14 AS build
-
-# Set working directory inside the container
-WORKDIR /app
-
-# Copy package.json and package-lock.json
+# Build stage
+FROM node:20.10-alpine AS build
+WORKDIR /usr/src/app
 COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
+RUN npm install -g npm@10.5.0
 COPY . .
-
-# Build the React app
 RUN npm run build
 
-# Use lightweight Nginx image as the base image for serving static files
-FROM nginx:alpine
-
-# Copy built React app from the previous stage
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Replace default Nginx configuration to enable request forwarding
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d
-
-# Expose port 3000
-EXPOSE 3000
-
-# Command to run Nginx server
-CMD ["nginx", "-g", "daemon off;"]
-
+# Final stage
+FROM nginx:1.25.4-alpine 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
+EXPOSE 3002

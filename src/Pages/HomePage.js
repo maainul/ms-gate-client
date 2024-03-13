@@ -53,7 +53,7 @@ const HomePage = () => {
                 <div class="w-64 bg-white">
                     <Sidebar />
                 </div>
-                {error && <>{error}</>}
+
                 <div class="flex-grow w-full">
 
                     {/* Heading of Process */}
@@ -78,6 +78,7 @@ const HomePage = () => {
                                 totalVehicles={totalVehicles}
                             />
                         </div>
+                        {error && <>{error}</>}
                     </div>
 
                     <div>
