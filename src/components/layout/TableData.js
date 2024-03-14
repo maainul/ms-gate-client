@@ -52,9 +52,9 @@ const TableData = ({url }) => {
                totalVehicles={totalVehicles}
           />
          
-                    <div>
+                    {/* <div>
                         {JSON.stringify(formAttributes)}
-                    </div>
+                    </div> */}
 
         </>
     )
