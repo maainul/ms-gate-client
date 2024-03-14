@@ -7,6 +7,8 @@ import TableData from './../components/layout/TableData';
 // CHARTS
 import BarChart from '../components/charts/BarChart';
 import PieChart from './../components/charts/PieChart';
+import LineChart from '../components/charts/LineChart';
+import RadialBar from '../components/charts/RadialBar';
 
 const HomePage = () => {
 
@@ -34,11 +36,19 @@ const HomePage = () => {
                     {/* Charts */}
                     <div className='ml-10 mr-10 mt-10 h-[350px] grid grid-cols-2 gap-4'>
                         <div className='bg-white'>
-                            <BarChart isDashboard={true} />
+                        <BarChart isDashboard={true} />
                         </div>
                         {/* <div className='bg-white'> */}
                         <PieChart isDashboard={true} />
                         {/* </div> */}
+                    </div>
+                     <div className='ml-10 mr-10 mt-10 h-[350px] grid grid-cols-2 gap-4'>
+                        <div className='bg-white'>
+                        <LineChart isDashboard={true} />
+                        </div>
+                        <div className='bg-white'>
+                        <RadialBar isDashboard={true} />
+                        </div>
                     </div>
                     {/* Tables of Landing Page */}
                     <div class="relative overflow-x-auto p-10">
