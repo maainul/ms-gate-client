@@ -4,11 +4,11 @@ import axios from 'axios'
 import { GET_ALL_FORM_ATTRIBUTE_LIST } from '../../api/api';
 import Pagination from '../../components/layout/Pagination'
 
-const TableData = ({url }) => {
+const TableData = ({ url }) => {
 
     const [vehicles, setVehicles] = useState([])
-    const [error,setError] = useState(null)
-    const [formAttributes,setFormAttribute] = useState(null)
+    const [error, setError] = useState(null)
+    // const [formAttributes,setFormAttribute] = useState(null)
 
     // Pagination Input Fields
     const [numberOfPage, setNumberOfPage] = useState(2)
@@ -40,19 +40,19 @@ const TableData = ({url }) => {
             }
         };
         fetchHomePageData();
-    }, [page, limit,url])
+    }, [page, limit, url])
 
     return (
         <>
-          <Table  data={vehicles}/>
-          <Pagination
-               numberOfPage={numberOfPage}
+            <Table data={vehicles} />
+            <Pagination
+                numberOfPage={numberOfPage}
                 setPage={setPage}
-               page={page}
-               totalVehicles={totalVehicles}
-          />
-         
-                    {/* <div>
+                page={page}
+                totalVehicles={totalVehicles}
+            />
+
+            {/* <div>
                         {JSON.stringify(formAttributes)}
                     </div> */}
 

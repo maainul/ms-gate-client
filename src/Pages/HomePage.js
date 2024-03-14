@@ -16,6 +16,8 @@ import { ReactComponent as BellIcon } from '../img/bell-regular.svg';
 import { ReactComponent as GlobeSolid } from '../img/globe-solid.svg';
 import { ReactComponent as BarsSolid } from '../img/bars-solid.svg';
 import { ReactComponent as SunRegular } from '../img/sun-regular.svg';
+import { ReactComponent as SearchIcon } from '../img/magnifying-glass-solid.svg';
+
 // import { ReactComponent as SunSolid } from '../img/sun-solid.svg';
 import ProfileImage from '../img/default.png';
 
@@ -33,24 +35,23 @@ const HomePage = () => {
                 </div>
 
                 <div class="flex-grow w-full">
-                {/* Searchbar */}
-                <div className='bg-white h-16 mt-3 ml-10 mr-10 rounded-md flex justify-between'>
-                   <input type='text' />
+                    {/* Searchbar */}
+                    <div className='bg-white h-14 m-10 mt-5 rounded-lg flex justify-between '>
+                        <div className='flex pl-5 gap-2'>
+                            <SearchIcon className="w-4 hover:cursor-pointer fill-gray-400" />
+                            <input type='text' className='flex-grow p-2 focus:border-transparent outline-none w-96' placeholder='Search...' />
+                        </div>
 
-                   <div className='flex gap-3 mr-7 justify-center items-center'>
-                           <GlobeSolid className="w-5"/>
-                           <BarsSolid className="w-5"/>
-                           <SunRegular className="w-5"/>
-                           <BellIcon className="w-5"/>
-                           <img src={ProfileImage} className='w-12 h-12 rounded-full' />
-                   </div>
-                </div>
-
-                    {/* Heading of Process */}
-                    <div className="flex justify-between m-10 text-gray-600">
-                        <span className="font-bold">Dashboard</span>
-                        <span>Icons</span>
+                        <div className='flex gap-4 mr-7 justify-center items-center'>
+                            <GlobeSolid className="w-5 hover:cursor-pointer fill-gray-400" />
+                            <BarsSolid className="w-5 hover:cursor-pointer fill-gray-400" />
+                            <SunRegular className="w-5 hover:cursor-pointer fill-gray-400" />
+                            <BellIcon className="w-5 hover:cursor-pointer fill-gray-400" />
+                            <img src={ProfileImage} alt='profile' className='w-8 h-8 rounded-full hover:cursor-pointer border-2 border-gray-200' />
+                        </div>
                     </div>
+
+
 
                     {/* Cards */}
                     <div className="grid grid-cols-6 gap-4 mx-10">
@@ -59,18 +60,18 @@ const HomePage = () => {
                     {/* Charts */}
                     <div className='ml-10 mr-10 mt-10 h-[350px] grid grid-cols-2 gap-4 '>
                         <div className='bg-white rounded-md'>
-                        <BarChart isDashboard={true} />
+                            <BarChart isDashboard={true} />
                         </div>
                         {/* <div className='bg-white'> */}
                         <PieChart isDashboard={true} />
                         {/* </div> */}
                     </div>
-                     <div className='ml-10 mr-10 mt-10 h-[350px] grid grid-cols-2 gap-4'>
+                    <div className='ml-10 mr-10 mt-10 h-[350px] grid grid-cols-2 gap-4'>
                         <div className='bg-white rounded-md'>
-                        <RadialBar isDashboard={true} />
+                            <RadialBar isDashboard={true} />
                         </div>
                         <div className='bg-white rounded-md'>
-                        <LineChart isDashboard={true} />
+                            <LineChart isDashboard={true} />
                         </div>
                     </div>
                     {/* Tables of Landing Page */}

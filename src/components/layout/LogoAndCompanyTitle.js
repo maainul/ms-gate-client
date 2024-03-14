@@ -12,7 +12,7 @@ const LogoAndCompanyTitle = () => {
                     <img src={logo} className="w-6" alt="Logo" />
                     <span className="font-bold text-xl text-blue-600 text-center">GATE Entry</span>
                 </div>
-                <FontAwesomeIcon icon={faBars} className="text-xl text-gray-500" />
+                <FontAwesomeIcon icon={faBars} className="text-xl text-gray-500 hover:cursor-pointer" />
             </div>
         </>
     )
