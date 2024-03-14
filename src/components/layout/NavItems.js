@@ -14,7 +14,7 @@ const navItems = [
       },
       {
         icon: require("../../img/chart-simple-solid.svg").default,
-        label: "Visual Data",
+        label: "Vehicle Visual Data",
         url: "/gac/vehicle/analytics",
       }
     ]
