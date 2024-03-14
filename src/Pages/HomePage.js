@@ -44,10 +44,10 @@ const HomePage = () => {
                     </div>
                      <div className='ml-10 mr-10 mt-10 h-[350px] grid grid-cols-2 gap-4'>
                         <div className='bg-white'>
-                        <LineChart isDashboard={true} />
+                        <RadialBar isDashboard={true} />
                         </div>
                         <div className='bg-white'>
-                        <RadialBar isDashboard={true} />
+                        <LineChart isDashboard={true} />
                         </div>
                     </div>
                     {/* Tables of Landing Page */}
