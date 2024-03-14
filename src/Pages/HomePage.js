@@ -4,6 +4,10 @@ import Sidebar from './../components/layout/Sidebar';
 import Cards from './../components/layout/Cards';
 import TableData from './../components/layout/TableData';
 
+// CHARTS
+import BarChart from '../components/charts/BarChart';
+import PieChart from './../components/charts/PieChart';
+
 const HomePage = () => {
 
     return (
@@ -27,13 +31,23 @@ const HomePage = () => {
                     <div className="grid grid-cols-5 gap-4 mx-10">
                         <Cards />
                     </div>
-
+                    {/* Charts */}
+                    <div className='ml-10 mr-10 mt-10 h-[350px] grid grid-cols-2 gap-4'>
+                        <div className='bg-white'>
+                            <BarChart isDashboard={true} />
+                        </div>
+                        {/* <div className='bg-white'> */}
+                        <PieChart isDashboard={true} />
+                        {/* </div> */}
+                    </div>
                     {/* Tables of Landing Page */}
                     <div class="relative overflow-x-auto p-10">
                         <div class="relative overflow-x-auto shadow-md bg-white">
                             <TableData url={GET_ALL_VEHICLE_LIST} />
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
