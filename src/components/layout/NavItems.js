@@ -5,17 +5,17 @@ const navItems = [
       {
         icon: require("../../img/car-solid.svg").default,
         label: "Add Vehicles",
-        url: "/vehicle/create",
+        url: "/gac/vehicle/add",
       },
       {
         icon: require("../../img/rectangle-list-regular.svg").default,
         label: "Vehicle List",
-        url: "/vehicle/list",
+        url: "/gac/vehicle/list",
       },
       {
         icon: require("../../img/chart-simple-solid.svg").default,
         label: "Visual Data",
-        url: "/vehicle/analytics",
+        url: "/gac/vehicle/analytics",
       }
     ]
   },

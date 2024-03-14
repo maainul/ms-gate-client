@@ -4,7 +4,7 @@ import { mockBarData as data } from '../../data/mockdata'
 
 const BarChart = ({ isDashboard = false }) => {
     return (
-        <>
+        <div className='bg-white rounded-md'>
             <ResponsiveBar
                 data={data}
                 keys={['hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut']}
@@ -116,7 +116,7 @@ const BarChart = ({ isDashboard = false }) => {
                 ariaLabel="Bar Chart"
                 barAriaLabel={e => e.id + ": " + e.formattedValue + " in country: " + e.indexValue}
             />
-        </>
+        </div>
     )
 }
 

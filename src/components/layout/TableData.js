@@ -43,7 +43,7 @@ const TableData = ({ url }) => {
     }, [page, limit, url])
 
     return (
-        <>
+        <div class="relative overflow-x-auto shadow-md bg-white">
             <Table data={vehicles} />
             <Pagination
                 numberOfPage={numberOfPage}
@@ -56,7 +56,7 @@ const TableData = ({ url }) => {
                         {JSON.stringify(formAttributes)}
                     </div> */}
 
-        </>
+        </div>
     )
 }
 
