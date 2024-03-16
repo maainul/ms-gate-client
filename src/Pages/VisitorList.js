@@ -1,10 +1,10 @@
 import React from 'react';
-import { GET_ALL_VEHICLE_LIST } from './../api/api';
+import { GET_ALL_VEHICLE_LIST } from '../api/api';
 import TableData from '../components/layout/TableData';
 import Sidebar from '../components/layout/Sidebar';
 import SearchBar from '../components/layout/SearchBar';
 
-const VehicleEntryList = () => {
+const VisitorList = () => {
     return (
         <div class="flex min-h-screen bg-gray-100 text-gray-500">
             <Sidebar />
@@ -19,4 +19,4 @@ const VehicleEntryList = () => {
     );
 };
 
-export default VehicleEntryList;
+export default VisitorList;

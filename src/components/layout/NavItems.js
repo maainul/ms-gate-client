@@ -25,17 +25,17 @@ const navItems = [
       {
         icon: require("../../img/users-solid.svg").default,
         label: "Add Visitors",
-        url: "/visitor/create",
+        url: "/gac/visitor/add",
       },
       {
         icon: require("../../img/address-book-regular.svg").default,
         label: "Visitor List",
-        url: "/visitor/list",
+        url: "/gac/visitor/list",
       },
       {
         icon: require("../../img/chart-simple-solid.svg").default,
         label: "Visual Data",
-        url: "/visitor/analytics",
+        url: "/gac/visitor/analytics",
       }
     ]
   }

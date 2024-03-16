@@ -13,8 +13,8 @@ const LogoAndCompanyTitle = () => {
                 to={"/gac/home"}
             >
                 <div className='flex gap-3'>
-                    <img src={logo} className="w-6" alt="Logo" />
-                    <span className="font-bold text-xl text-blue-600 text-center">GATE Entry</span>
+                    {/* <img src={logo} className="w-6" alt="Logo" /> */}
+                    <span className="font-bold text-xl text-blue-600 text-center">GAC</span>
                 </div>
                 <FontAwesomeIcon icon={faBars} className="text-xl text-gray-500" />
             </Link>
