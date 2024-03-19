@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GET_ALL_VEHICLE_LIST } from './../api/api';
 import TableData from '../components/layout/TableData';
 import Sidebar from '../components/layout/Sidebar';
@@ -12,7 +12,7 @@ const VehicleEntryList = () => {
                 {/* Searchbar */}
                 <SearchBar />
                 <div className='m-10'>
-                    <TableData url={GET_ALL_VEHICLE_LIST} />
+                    <TableData url={GET_ALL_VEHICLE_LIST} title={"Vehicle Entry List"} />
                 </div>
             </div>
         </div>

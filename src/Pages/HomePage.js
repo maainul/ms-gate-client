@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GET_ALL_VEHICLE_LIST } from '../api/api'
 import Sidebar from './../components/layout/Sidebar';
 import Cards from './../components/layout/Cards';
@@ -46,6 +46,7 @@ const HomePage = () => {
                         <TableData url={GET_ALL_VEHICLE_LIST} />
                         <TableData url={GET_ALL_VEHICLE_LIST} />
                     </div>
+
                 </div>
             </div>
         </div >

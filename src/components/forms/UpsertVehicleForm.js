@@ -4,6 +4,7 @@ import InputBox from './../layout/InputBox';
 import TextArea from './../layout/TextArea';
 import axios from 'axios'
 import { CREATE_VEHICLE } from "../../api/api";
+import { ReactComponent as CloseIcon } from '../../img/xmark-solid.svg';
 
 
 const UpsertVehicleForm = () => {
@@ -45,7 +46,7 @@ const UpsertVehicleForm = () => {
 
 
     return (
-        <div className='m-10 bg-white px-10 py-20 rounded-md'>
+        <div className='m-10 bg-white px-10 py-10 rounded-md'>
             <form onSubmit={handleSubmit(handleRegistration, handleError)}>
                 <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2  sm:grid-cols-1 gap-4">
                     {/* Vehicle Info */}

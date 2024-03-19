@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import car from '../../img/car.jpg'
 
-const Table = ({ data}) => {
+const Table = ({ data }) => {
     return (
         <>
             <div >
@@ -10,12 +10,12 @@ const Table = ({ data}) => {
                 <table className="w-full text-sm text-left rtl:text-right">
                     <thead className="text-xs text-white uppercase bg-blue-500">
                         <tr>
-                            <th scope="col" className="px-6 py-3">Image</th>
-                            <th scope="col" className="px-6 py-3">Vehicle Info</th>
-                            <th scope="col" className="px-6 py-3">Driver Info</th>
-                            <th scope="col" className="px-6 py-3">Visitor Info</th>
-                            <th scope="col" className="px-6 py-3">Last Visit Date</th>
-                            <th scope="col" className="px-6 py-3">Action</th>
+                            <th scope="col" className="px-6 py-2">Image</th>
+                            <th scope="col" className="px-6 py-2">Vehicle Info</th>
+                            <th scope="col" className="px-6 py-2">Driver Info</th>
+                            <th scope="col" className="px-6 py-2">Visitor Info</th>
+                            <th scope="col" className="px-6 py-2">Last Visit Date</th>
+                            <th scope="col" className="px-6 py-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,7 +24,7 @@ const Table = ({ data}) => {
                                 data.map(values => (
                                     <tr className="border border-gray-200" key={values._id}>
                                         <td className="px-6">
-                                            <img src={car} alt='default' className='rounded-full w-14 h-14 m-2' />
+                                            <img src={car} alt='default' className='rounded-full w-10 h-10 m-2' />
                                         </td>
                                         <td className="px-6">
                                             {values.vehicle.numberPlate}-{values.vehicle.name} - {values.vehicle.color}- {values.vehicle.model}
@@ -56,12 +56,12 @@ const Table = ({ data}) => {
                                         <td className="px-6 ">
                                             21/01/2024
                                         </td>
-                                         <td className="px-6">
+                                        <td className="px-6">
                                             <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">Edit</Link>
-                                             <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">View</Link>
-                                             <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">Delete</Link>
+                                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">View</Link>
+                                            <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">Delete</Link>
                                         </td>
-                                       
+
                                     </tr>
                                 ))
                             ) : (

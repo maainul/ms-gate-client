@@ -1,28 +1,29 @@
 import { useEffect, useState } from 'react';
 import Table from './Table';
 import axios from 'axios'
-
-// import { GET_ALL_FORM_ATTRIBUTE_LIST } from '../../api/api';
+import { ReactComponent as PlusIcon } from '../../img/plus-solid.svg';
 
 import Pagination from '../../components/layout/Pagination'
 import { GET_ALL_FORM_ATTRIBUTE_LIST } from '../../api/api';
 
-const TableData = ({ url }) => {
+import MyModal from '../../Pages/MyModal';
 
-    const [vehicles, setVehicles] = useState([])
-    const [error, setError] = useState(null)
 
-    // Another Server Data
-    const [formAttribute, setFormAttribute] = useState(null)
 
-    // Pagination Input Fields
-    const [numberOfPage, setNumberOfPage] = useState(2)
-    const [totalVehicles, setTotalVehicles] = useState(0)
-    const [page, setPage] = useState('1')
-    const [limit, setLimit] = useState('5')
+
+const TableData = ({ url, title }) => {
+
+    const [vehicles, setVehicles] = useState([]);
+    const [error, setError] = useState(null);
+    // const [formAttribute, setFormAttribute] = useState(null);
+    const [numberOfPage, setNumberOfPage] = useState(2);
+    const [totalVehicles, setTotalVehicles] = useState(0);
+    const [page, setPage] = useState('1');
+    const [limit, setLimit] = useState('10');
+    const [showModal, setShowModal] = useState(false);
+    const handleOnClose = () => setShowModal(false);
     console.log(setLimit) // For Successful build. Eita na dile netlify te build hoi na
-    console.log(error)
-
+    console.log(error)// For Successful build. Eita na dile netlify te build hoi na
 
     useEffect(() => {
         const fetchHomePageData = async () => {
@@ -32,11 +33,10 @@ const TableData = ({ url }) => {
                 setNumberOfPage(res.data.data.numOfPage)
                 setTotalVehicles(res.data.data.totalVehicleBasedOnQueryObject)
                 setError(null)
-
                 // call to another 
-                const sysRes = await axios.get(GET_ALL_FORM_ATTRIBUTE_LIST)
-                console.log(sysRes.data.data)
-                setFormAttribute(sysRes.data.data)
+                // const sysRes = await axios.get(GET_ALL_FORM_ATTRIBUTE_LIST)
+                // console.log(sysRes.data.data)
+                // setFormAttribute(sysRes.data.data)
 
             } catch (error) {
                 console.log("Error While Getting Expense Types", error)
@@ -48,6 +48,10 @@ const TableData = ({ url }) => {
 
     return (
         <div className="relative overflow-x-auto shadow-md bg-white">
+            <div className='flex justify-between m-4'>
+                <div className='font-bold text-purple-500'>{title}</div>
+                <PlusIcon className="w-5 hover:cursor-pointer fill-purple-400" onClick={() => setShowModal(true)} />
+            </div>
             <Table data={vehicles} />
             <Pagination
                 numberOfPage={numberOfPage}
@@ -55,12 +59,7 @@ const TableData = ({ url }) => {
                 page={page}
                 totalVehicles={totalVehicles}
             />
-
-            <div>
-                {JSON.stringify(formAttribute)}
-            </div>
-
-
+            <MyModal onClose={handleOnClose} visible={showModal} />
         </div>
     )
 }
