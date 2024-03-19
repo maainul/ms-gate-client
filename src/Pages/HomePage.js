@@ -19,10 +19,10 @@ const HomePage = () => {
     return (
 
         <div>
-            <div class="flex min-h-screen bg-gray-100 text-gray-500">
+            <div className="flex min-h-screen bg-gray-100 text-gray-500">
                 {/* Sidebar OR Left Bar of Index Page */}
                 <Sidebar />
-                <div class="flex-grow w-full">
+                <div className="flex-grow w-full">
 
                     {/* Searchbar */}
                     <SearchBar />
@@ -42,7 +42,7 @@ const HomePage = () => {
                     </div>
 
                     {/* Tables of Landing Page */}
-                    <div class="relative overflow-x-auto p-10 grid grid-cols-2 gap-4">
+                    <div className="relative overflow-x-auto p-10 grid grid-cols-2 gap-4">
                         <TableData url={GET_ALL_VEHICLE_LIST} />
                         <TableData url={GET_ALL_VEHICLE_LIST} />
                     </div>

@@ -7,9 +7,9 @@ import SearchBar from '../components/layout/SearchBar';
 
 const VisitorAnalytics = () => {
     return (
-        <div class="flex min-h-screen bg-gray-100 text-gray-500">
+        <div className="flex min-h-screen bg-gray-100 text-gray-500">
             <Sidebar />
-            <div class="flex-grow w-full">
+            <div className="flex-grow w-full">
                 {/* Searchbar */}
                 <SearchBar />
                 <div className='ml-10 mr-10 mt-10 h-[350px] grid grid-cols-2 gap-4 '>

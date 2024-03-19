@@ -47,7 +47,7 @@ const TableData = ({ url }) => {
     }, [page, limit, url])
 
     return (
-        <div class="relative overflow-x-auto shadow-md bg-white">
+        <div className="relative overflow-x-auto shadow-md bg-white">
             <Table data={vehicles} />
             <Pagination
                 numberOfPage={numberOfPage}

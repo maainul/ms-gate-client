@@ -7,9 +7,9 @@ import UpsertVehicleForm from '../components/forms/UpsertVehicleForm'
 const AddVehicle = () => {
 
     return (
-        <div class="flex min-h-screen bg-gray-100 text-gray-500">
+        <div className="flex min-h-screen bg-gray-100 text-gray-500">
             <Sidebar />
-            <div class="flex-grow w-full">
+            <div className="flex-grow w-full">
                 <SearchBar />
                 <UpsertVehicleForm />
             </div>

@@ -6,9 +6,9 @@ import TextArea from '../components/layout/TextArea'
 
 const AddVisitor = () => {
     return (
-        <div class="flex min-h-screen bg-gray-100 text-gray-500">
+        <div className="flex min-h-screen bg-gray-100 text-gray-500">
             <Sidebar />
-            <div class="flex-grow w-full">
+            <div className="flex-grow w-full">
                 {/* Searchbar */}
                 <SearchBar />
 
