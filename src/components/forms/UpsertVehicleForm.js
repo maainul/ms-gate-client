@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm,useFieldArray  } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import InputBox from './../layout/InputBox';
 import TextArea from './../layout/TextArea';
 import axios from 'axios'
@@ -7,13 +7,13 @@ import { CREATE_VEHICLE } from "../../api/api";
 
 
 const UpsertVehicleForm = () => {
-    const { register, handleSubmit, formState: { errors }} = useForm();
-    const handleRegistration = async(data) => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const handleRegistration = async (data) => {
         try {
-            const res = await axios.post(CREATE_VEHICLE,data)
-            console.log("success",res.response.data)
+            const res = await axios.post(CREATE_VEHICLE, data)
+            console.log("success", res.response.data)
         } catch (error) {
-            console.log(error.response.data);
+            console.log(error);
         }
     }
     const handleError = (errors) => { };
@@ -25,21 +25,22 @@ const UpsertVehicleForm = () => {
             model: { required: "model is required" },
             numberPlate: { required: "number Plate is required" },
         },
-         drivers: [
+        drivers: [
             {
-            photo: { required: "photo is required" },
-            name: { required: "name is required" },
-            phoneNumber: { required: "phone Number is required" },
-            address: { required: "address is required" },
-        }],
-        visitors: [
-            {
-            name: { required: "name is required" },
+                photo: { required: "photo is required" },
+                name: { required: "name is required" },
+                phoneNumber: { required: "phone Number is required" },
+                address: { required: "address is required" },
+            }],
+        visitors: [{
+            referencePeople: [{
+                name: { required: "name is required" },
+            }],
             numberOfPassengers: { required: "number Of Passengers is required" },
             purpose: { required: "purpose is required" },
             entryTimes: { required: "entry Times is required" },
         }
-    ]
+        ]
     };
 
 
@@ -74,31 +75,27 @@ const UpsertVehicleForm = () => {
                         {/* {errors && errors.drivers?.address && <span className="text-red-500 text-sm mt-1">{errors.vehicle?.address.message}</span>} */}
                     </div>
 
-                   {/* Visitor Info */}
+                    {/* Visitor Info */}
                     <div className='p-6 rounded-md bg-purple-50 hover:bg-purple-100 hover:cursor-pointer'>
                         <h1 className='text-gray-800 font-semibold'>Visitor Info</h1>
-                        <InputBox title="Name" name="visitors[0].name" id="visitorName" borderColor="border-2 border-purple-300 focus:border-purple-600" type="text" register={register} />
+                        <InputBox title="Name" name="visitors[0].referencePeople[0].name" id="visitorName" borderColor="border-2 border-purple-300 focus:border-purple-600" type="text" register={register} />
                         {/* {errors && errors.visitors?.name && <span className="text-purple-500 text-sm mt-1">{errors.visitors?.name.name}</span>} */}
                         <InputBox title="Number Of Passengers" name="visitors[0].numberOfPassengers" id="numberOfPassengers" borderColor="border-2 border-purple-300 focus:border-purple-600" type="text" register={register} />
                         {/* {errors && errors.visitors?.numberOfPassengers && <span className="text-purple-500 text-sm mt-1">{errors.visitors?.numberOfPassengers.message}</span>} */}
                         <InputBox title="Purpose" name="visitors[0].purpose" id="purpose" borderColor="border-2 border-purple-300 focus:border-purple-600" type="text" register={register} />
                         {/* {errors && errors.visitors?.purpose && <span className="text-purple-500 text-sm mt-1">{errors.visitors?.purpose.message}</span>} */}
-                       
-                        <InputBox title="reference People" name="visitors[0].referencePeople" id="referencePeople" borderColor="border-2 border-purple-300 focus:border-purple-600" type="text" register={register} />
+                        <InputBox title="Entry Times" name="visitors[0].entryTimes" id="entryTimes" borderColor="border-2 border-purple-300 focus:border-purple-600" type="date" register={register} />
                         {/* {errors && errors.visitors?.entryTimes && <span className="text-purple-500 text-sm mt-1">{errors.visitors?.entryTimes.message}</span>} */}
-                        <InputBox title="Entry Times" name="visitors[0].entryTimes" id="entryTimes" borderColor="border-2 border-purple-300 focus:border-purple-600" type="text" register={register} />
-                        {/* {errors && errors.visitors?.entryTimes && <span className="text-purple-500 text-sm mt-1">{errors.visitors?.entryTimes.message}</span>} */}
-                    </div>
-      
-                    <div className="flex justify-center my-10 gap-4">
-                        <button type="button" className="text-sm font-semibold leading-6 text-white xl: w-72 lg:w-36 sm:w-32 bg-rose-500 rounded-sm shadow-sm hover:bg-rose-400 h-10">
-                            Cancel
-                        </button>
-                        <button type="submit" className="rounded-sm bg-green-500 px-3 py-2 text-sm font-semibold xl: w-72 lg:w-36 sm:w-32 text-white shadow-sm hover:bg-green-400 h-10">
-                            Save
-                        </button>
                     </div>
                 </div >
+                <div className="w-full flex justify-center gap-4">
+                    <button type="button" className="rounded-md text-sm font-semibold leading-6 text-white lg:w-36 sm:w-32 xl:w-72  bg-rose-500 shadow-sm hover:bg-rose-400 h-10">
+                        Cancel
+                    </button>
+                    <button type="submit" className="rounded-md bg-purple-500 px-3 py-2 text-sm font-semibold xl:w-72 lg:w-36 sm:w-32 text-white shadow-sm hover:bg-purple-400 h-10">
+                        Save
+                    </button>
+                </div>
             </form>
         </div>
     );
