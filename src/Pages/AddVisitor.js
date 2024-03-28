@@ -19,30 +19,9 @@ const AddVisitor = () => {
                             <div className='p-6 rounded-md bg-lime-50 hover:bg-lime-100 hover:cursor-pointer'>
                                 <h1 className='text-gray-800 font-semibold'>Vehicle Info</h1>
                                 <InputBox title={"Name"} name={"name"} id={"name"} borderColor={"border-2 border-lime-300 focus:border-lime-600"} type={"text"} />
-                                <InputBox title={"Color"} name={"color"} id={"color"} borderColor={"border-2 border-lime-300 focus:border-lime-600"} type={"text"} />
-                                <InputBox title={"Model"} name={"model"} id={"model"} borderColor={"border-2 border-lime-300 focus:border-lime-600"} type={"text"} />
-                                <InputBox title={"NumberPlate"} name={"numberPlate"} id={"numberPlate"} borderColor={"border-2 border-lime-300 focus:border-lime-600"} type={"text"} />
+                                <InputBox title={"Mobile Number"} name={"mobileNumber"} id={"mobileNumber"} borderColor={"border-2 border-lime-300 focus:border-lime-600"} type={"text"} />
+                                <InputBox title={"Gender"} name={"gender"} id={"gender"} borderColor={"border-2 border-lime-300 focus:border-lime-600"} type={"text"} />
                             </div>
-
-                            {/* Form Part 1 */}
-                            <div className='p-6 rounded-md bg-orange-50 hover:bg-orange-100 hover:cursor-pointer'>
-                                <h1 className='text-gray-800 font-semibold'>Driver Info</h1>
-                                <InputBox title={"Photo"} name={"photo"} id={"photo"} borderColor={"border-2 border-orange-300 focus:border-orange-600"} type={"text"} />
-                                <InputBox title={"Name"} name={"name"} id={"name"} borderColor={"border-2 border-orange-300 focus:border-orange-600"} type={"text"} />
-                                <InputBox title={"Phone Number"} name={"phoneNumber"} id={"phoneNumber"} borderColor={"border-2 border-orange-300 focus:border-orange-600"} type={"text"} />
-                                <TextArea title={"Address"} name={"address"} id={"address"} borderColor={"border-2 border-orange-300 focus:border-orange-600"} type={"text"} />
-
-                            </div>
-
-                            {/* Form Part 1 */}
-                            <div className='p-6 rounded-md bg-purple-50 hover:bg-purple-100 hover:cursor-pointer'>
-                                <h1 className='text-gray-800 font-semibold'>Reference People</h1>
-                                <InputBox title={"Name"} name={"referencePeople"} id={"referencePeople"} borderColor={"border-2 border-purple-300 focus:border-purple-600"} type={"text"} />
-                                <InputBox title={"Number Of Passengers"} name={"numberOfPassengers"} id={"numberOfPassengers"} borderColor={"border-2 border-purple-300 focus:border-purple-600"} type={"text"} />
-                                <InputBox title={"Purpose"} name={"purpose"} id={"purpose"} borderColor={"border-2 border-purple-300 focus:border-purple-600"} />
-                                <InputBox title={"Entry Times"} name={"entryTimes"} id={"entryTimes"} borderColor={"border-2 border-purple-300 focus:border-purple-600"} type={"date"} />
-                            </div>
-
 
                         </div>
                         <div className="flex justify-center my-10 gap-4">
