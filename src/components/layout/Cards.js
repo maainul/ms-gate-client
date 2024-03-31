@@ -4,7 +4,7 @@ import { ReactComponent as UserIcon } from '../../img/user-group-solid.svg';
 import { ReactComponent as GurardIcon } from '../../img/person-military-pointing-solid.svg';
 import { ReactComponent as ViewIcon } from '../../img/eye-regular.svg';
 
-const Cards = ({totalVehicles}) => {
+const Cards = ({totalVehicles,totalVisitors}) => {
     return (
         <div className="grid grid-cols-6 gap-4 mx-10">
             <Card
@@ -18,7 +18,7 @@ const Cards = ({totalVehicles}) => {
             <Card
                 title={"Total Visitors"}
                 icon={<UserIcon className="w-9 h-9 p-2 rounded-2xl text-gray-300 bg-purple-200 fill-purple-400" />}
-                totalAmount={100}
+                totalAmount={totalVisitors}
                 hoverColor={'hover:bg-purple-50'}
                 textColor={'text-purple-500'}
 
