@@ -26,7 +26,6 @@ const VehicleEntryList = () => {
                         </div>
                         <VehicleTable url={GET_ALL_VEHICLE_LIST} />
                     </div>
-                    {/*<TableData url={GET_ALL_VEHICLE_LIST} title={"Vehicle Entry List"} />*/}
                 </div>
                 <VehicleModal onClose={handleOnClose} visible={showModal} />
             </div>

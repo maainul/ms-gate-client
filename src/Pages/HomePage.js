@@ -22,6 +22,14 @@ import axios from 'axios';
 const HomePage = () => {
     const [totalVehicles,setTotalVehicles] = useState('0')
     const [totalVisitors,setTotalVisitors] = useState('0')
+    const [totalVisitorToday,setTotalVisitorToday] = useState('0')
+    const [visitorTotalCurrentMonth,setVisitorTotalCurrentMonth] = useState('0')
+    const [currentMonth,setCurrentMonth] = useState('')
+    const [currentYear,setCurrentYear] = useState('0')
+    const [vehicleTodayTotal, setVehicleTodayTotal] = useState('0')
+    const [vehicleTotalCurrentMonth,setVehicleTotalCurrentMonth] = useState('0')
+
+
 
     useEffect(() =>{
         const fetchData = async () =>{
@@ -30,6 +38,12 @@ const HomePage = () => {
                 console.log(res.data.data)
                 setTotalVehicles(res.data.data.vehicleTotal)
                 setTotalVisitors(res.data.data.visitorTotal)
+                setTotalVisitorToday(res.data.data.visitorTodayTotal)
+                setVisitorTotalCurrentMonth(res.data.data.visitorTotalCurrentMonth)
+                setCurrentMonth(res.data.data.currentMonth)
+                setCurrentYear(res.data.data.currentYear)
+                setVehicleTodayTotal(res.data.data.vehicleTodayTotal)
+                setVehicleTotalCurrentMonth(res.data.data.vehicleTotalCurrentMonth)
             } catch (error) {
                 console.log(error)
             }
@@ -49,7 +63,16 @@ const HomePage = () => {
                     <SearchBar />
 
                     {/* Cards */}
-                    <Cards totalVehicles={totalVehicles} totalVisitors={totalVisitors}/>
+                    <Cards 
+                        totalVehicles={totalVehicles} 
+                        totalVisitors={totalVisitors} 
+                        totalVisitorToday ={totalVisitorToday} 
+                        visitorTotalCurrentMonth={visitorTotalCurrentMonth}
+                        currentMonth = {currentMonth}
+                        currentYear = {currentYear}
+                        vehicleTodayTotal = {vehicleTodayTotal}
+                        vehicleTotalCurrentMonth = {vehicleTotalCurrentMonth}
+                    />
 
                     {/* Charts */}
                     <div className='ml-10 mr-10 mt-10 h-[350px] grid grid-cols-2 gap-4 '>

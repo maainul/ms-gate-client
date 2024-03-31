@@ -11,6 +11,7 @@ export const VehicleTable = ({url}) =>{
         {label:"Color",key:"vehicle.color"},
         {label:"Model",key:"vehicle.model"},
         {label:"Number Plate",key:"vehicle.numberPlate"},
+        {label:"Created At",key:"createdAt"},
     ]
 
     const [vehicle,setVehicle] = useState([])
@@ -61,6 +62,7 @@ export const VehicleTable = ({url}) =>{
                                 <td>{row.vehicle.color}</td>
                                 <td>{row.vehicle.model}</td>
                                 <td>{row.vehicle.numberPlate}</td>
+                                <td>{row.createdAt}</td>
                                 <td className={`${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-gray-700 whitespace-nowrap`}>
                                     <Link to={`/edit/${row._id}`} 
                                           className="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg bg-opacity-50 mr-2 hover:bg-yellow-400">Edit</Link>
