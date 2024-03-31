@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react'
-import axios from "axios";
+import React from 'react'
+
 import Sidebar from './../components/layout/Sidebar';
 import Cards from './../components/layout/Cards';
-// import TableData from './../components/layout/TableData';
 import SearchBar from '../components/layout/SearchBar';
 
 // CHARTS
@@ -13,31 +12,14 @@ import RadialBar from '../components/charts/RadialBar';
 
 
 
-import {GET_ALL_VEHICLE_LIST} from "../api/api";
+import {GET_ALL_VEHICLE_LIST, GET_ALL_VISITOR_LIST} from "../api/api";
+import {VisitorTable} from "../components/table/VisitorTable";
+import {VehicleTable} from "../components/table/VehicleTable";
 
 
 
 const HomePage = () => {
-    const [totalVehicles, setTotalVehicles] = useState(0);
-    const [error, setError] = useState(null);
-    console.log(error)
-    const url = GET_ALL_VEHICLE_LIST
-    const [page, setPage] = useState('1');
-    const [limit, setLimit] = useState('10');
-
-    useEffect(() => {
-        const fetchHomePageData = async ()=>{
-            try {
-                const res = await axios.get(`${url}?page=${page}&limit=${limit}`)
-                setTotalVehicles(res.data.data.totalVehicleBasedOnQueryObject)
-            }catch (error) {
-                console.log("Error While Getting Expense Types", error)
-                setError('Error: ' + error.message);
-            }
-        };
-        fetchHomePageData()
-    }, [page,limit,url]);
-
+    const totalVehicles = 10
 
     return (
 
@@ -66,8 +48,8 @@ const HomePage = () => {
 
                     {/* Tables of Landing Page */}
                     <div className="relative overflow-x-auto p-10 grid grid-cols-2 gap-4">
-                        {/*<TableData url={GET_ALL_VEHICLE_LIST} />*/}
-                        {/*<TableData url={GET_ALL_VEHICLE_LIST} />*/}
+                        <VisitorTable url={GET_ALL_VISITOR_LIST} />
+                        <VehicleTable url={GET_ALL_VEHICLE_LIST} />
                     </div>
 
                 </div>
@@ -77,5 +59,3 @@ const HomePage = () => {
 }
 
 export default HomePage
-
-// https://chat.openai.com/c/ab13c059-a6ec-4eac-bf12-4644075b370f

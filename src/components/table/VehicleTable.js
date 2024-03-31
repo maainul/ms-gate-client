@@ -3,17 +3,17 @@ import axios from "axios";
 import Pagination from "../layout/Pagination";
 import {Link} from "react-router-dom";
 
-export const VisitorTable = ({url}) =>{
+export const VehicleTable = ({url}) =>{
 
     // Table Structure
-    const visitorHeaders = [
-        { label: "VISITOR NAME", key: "name" },
-        { label: "MOBILE NUMBER", key: "mobileNumber" },
-        { label: "REFERENCE PEOPLE", key: "referencePeople" },
-        { label: "LAST VISIT DATE", key: "updatedAt" },
-    ];
+    const vehicleHeaders = [
+        {label:"Vehicle Name",key:"vehicle.name"},
+        {label:"Color",key:"vehicle.color"},
+        {label:"Model",key:"vehicle.model"},
+        {label:"Number Plate",key:"vehicle.numberPlate"},
+    ]
 
-    const [visitor,setVisitor] = useState([])
+    const [vehicle,setVehicle] = useState([])
 
     // Pagination
     const [page,setPage] = useState('1')
@@ -23,46 +23,44 @@ export const VisitorTable = ({url}) =>{
     const [totalData,setTotalData] = useState(0)
 
     useEffect(() => {
-        const fetchVisitorList = async () =>{
-            try {
+        const fetchVehicleList = async () =>{
+            try{
                 const res = await axios.get(`${url}?page=${page}&limit=${limit}`)
-                setVisitor(res.data.data.data)
+                setVehicle(res.data.data.data)
                 setCurrentPageData(res.data.data.pageDataCount)
                 setNumberOfPage(res.data.data.numberOfPage)
                 setTotalData(res.data.data.totalDataCount)
             }catch (error) {
-                console.log(error)
+               console.log(error)
             }
         };
-        fetchVisitorList()
+        fetchVehicleList()
     }, [page,limit,url]);
 
-
-    return(
+    return (
         <>
             <div>
             <div className="bg-white">
-                <table className="text-sm text-left rtl:text-right">
+                <table className="text-sm text-left rtl:text-right w-full">
                     <thead className="text-xs text-white uppercase bg-blue-500">
                     <tr>
                         <th className="">Sl</th>
-                        {visitorHeaders.map((header, index) => (
+                        {vehicleHeaders.map((header, index) => (
                             <th key={index} className="px-6 py-2">{header.label}</th>
                         ))}
                         <th>Action</th>
                     </tr>
                     </thead>
-
                 <tbody>
                 {
-                    visitor.length > 0 ? (
-                        visitor.map((row, rowIndex) => (
+                    vehicle.length > 0 ? (
+                        vehicle.map((row, rowIndex) => (
                             <tr className="border border-gray-200" key={rowIndex}>
                                 <td>{rowIndex + 1}</td>
-                                {visitorHeaders.map((header, colIndex) => (
-                                    <td key={colIndex}>
-                                        {row[header.key]}</td>
-                                ))}
+                                <td>{row.vehicle.name}</td>
+                                <td>{row.vehicle.color}</td>
+                                <td>{row.vehicle.model}</td>
+                                <td>{row.vehicle.numberPlate}</td>
                                 <td className="px-6">
                                     <Link to={`/edit/${row._id}`}
                                           className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">Edit</Link>
@@ -80,15 +78,15 @@ export const VisitorTable = ({url}) =>{
                 </tbody>
                 </table>
             </div>
-                <Pagination
-                    numberOfPage={numberOfPage}
-                    setPage={setPage}
-                    page={page}
-                    totalData={totalData}
-                    currentPageData={currentPageData}
-                />
+            <Pagination
+                numberOfPage={numberOfPage}
+                setPage={setPage}
+                page={page}
+                totalData={totalData}
+                currentPageData={currentPageData}
+            />
             </div>
-
         </>
     )
+
 }
