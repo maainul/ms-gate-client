@@ -41,35 +41,34 @@ export const VisitorTable = ({url}) =>{
     return(
         <>
             <div>
-            <div className="bg-white">
-                <table className="text-sm text-left rtl:text-right">
-                    <thead className="text-xs text-white uppercase bg-blue-500">
-                    <tr>
-                        <th className="">Sl</th>
-                        {visitorHeaders.map((header, index) => (
-                            <th key={index} className="px-6 py-2">{header.label}</th>
-                        ))}
-                        <th>Action</th>
-                    </tr>
+            <div className="bg-white overflow-auto rounded-lg shadow">
+                <table className="w-full">
+                    <thead className="bg-blue-500 border-y-2 border-gray-200 text-xs text-white">
+                        <tr className="">
+                            <th className="p-3 font-semibold tracking-wide text-left w-20 ">Sl</th>
+                            {visitorHeaders.map((header, index) => (
+                                <th key={index} className="p-3 font-semibold tracking-wide text-left">{header.label}</th>
+                            ))}
+                            <th className="p-3 font-semibold tracking-wide text-left">Action</th>
+                        </tr>
                     </thead>
-
                 <tbody>
                 {
                     visitor.length > 0 ? (
                         visitor.map((row, rowIndex) => (
-                            <tr className="border border-gray-200" key={rowIndex}>
-                                <td>{rowIndex + 1}</td>
+                            <tr className="" key={rowIndex}>
+                               <td className={`font-bold ${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-blue-600` }>{rowIndex + 1}</td>
                                 {visitorHeaders.map((header, colIndex) => (
-                                    <td key={colIndex}>
+                                    <td key={colIndex} className={`${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-gray-700 whitespace-nowrap`}>
                                         {row[header.key]}</td>
                                 ))}
-                                <td className="px-6">
-                                    <Link to={`/edit/${row._id}`}
-                                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">Edit</Link>
+                                <td className={`${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-gray-700 whitespace-nowrap`}>
+                                    <Link to={`/edit/${row._id}`} 
+                                          className="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg bg-opacity-50 mr-2 hover:bg-yellow-400">Edit</Link>
                                     <Link to={`/view/${row._id}`}
-                                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">View</Link>
+                                          className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50 mr-2 hover:bg-green-400">View</Link>
                                     <Link to={`/delete/${row._id}`}
-                                          className="font-medium text-blue-600 dark:text-blue-500 hover:underline pr-3">Delete</Link>
+                                          className="p-1.5 text-xs font-medium uppercase tracking-wider text-orange-800 bg-orange-200 rounded-lg bg-opacity-50 hover:bg-orange-400">Delete</Link>
                                 </td>
                             </tr>
                         ))
