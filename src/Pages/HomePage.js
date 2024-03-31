@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from "axios";
 import Sidebar from './../components/layout/Sidebar';
 import Cards from './../components/layout/Cards';
-import TableData from './../components/layout/TableData';
+// import TableData from './../components/layout/TableData';
 import SearchBar from '../components/layout/SearchBar';
 
 // CHARTS
@@ -20,7 +20,7 @@ import {GET_ALL_VEHICLE_LIST} from "../api/api";
 const HomePage = () => {
     const [totalVehicles, setTotalVehicles] = useState(0);
     const [error, setError] = useState(null);
-
+    console.log(error)
     const url = GET_ALL_VEHICLE_LIST
     const [page, setPage] = useState('1');
     const [limit, setLimit] = useState('10');

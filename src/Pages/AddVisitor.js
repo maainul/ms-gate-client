@@ -2,7 +2,7 @@ import React from 'react'
 import Sidebar from '../components/layout/Sidebar'
 import SearchBar from '../components/layout/SearchBar'
 import InputBox from '../components/layout/InputBox'
-import TextArea from '../components/layout/TextArea'
+// import TextArea from '../components/layout/TextArea'
 
 const AddVisitor = () => {
     return (

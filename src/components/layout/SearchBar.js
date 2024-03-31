@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import ProfileImage from '../../img/default.png';
 import { ReactComponent as BarsSolid } from '../../img/bars-solid.svg';

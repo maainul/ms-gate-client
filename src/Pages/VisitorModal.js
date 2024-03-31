@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import InputBox from '../components/layout/InputBox';
 import TextArea from '../components/layout/TextArea';
 import { useForm } from "react-hook-form";
@@ -19,14 +19,16 @@ const MyModal = ({ visible, onClose }) => {
         }
     };
 
-    const handleError = (errors) => { };
-    const registerOptions = {
-
-            name: { required: "name is required" },
-            mobileNumber: { required: "mobile Number is required" },
-            // entryTimes: { required: "entry Times is required" },
-            referencePeople: { required: "reference People  is required" },
+    const handleError = (errors) => {
+        console.log(errors)
     };
+    // const registerOptions = {
+    //
+    //         name: { required: "name is required" },
+    //         mobileNumber: { required: "mobile Number is required" },
+    //         // entryTimes: { required: "entry Times is required" },
+    //         referencePeople: { required: "reference People  is required" },
+    // };
 
     const handleOnClose = (e) => { if (e.target.id === "container") onClose() }
     if (!visible) return null

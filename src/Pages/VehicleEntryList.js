@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { GET_ALL_VEHICLE_LIST } from './../api/api';
 import TableData from '../components/layout/TableData';
 import Sidebar from '../components/layout/Sidebar';

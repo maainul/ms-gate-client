@@ -4,7 +4,7 @@ import InputBox from './../layout/InputBox';
 import TextArea from './../layout/TextArea';
 import axios from 'axios'
 import { CREATE_VEHICLE } from "../../api/api";
-import { ReactComponent as CloseIcon } from '../../img/xmark-solid.svg';
+// import { ReactComponent as CloseIcon } from '../../img/xmark-solid.svg';
 
 
 const UpsertVehicleForm = () => {

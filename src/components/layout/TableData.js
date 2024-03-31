@@ -4,7 +4,7 @@ import axios from 'axios'
 import { ReactComponent as PlusIcon } from '../../img/plus-solid.svg';
 
 import Pagination from '../../components/layout/Pagination'
-import { GET_ALL_FORM_ATTRIBUTE_LIST } from '../../api/api';
+// import { GET_ALL_FORM_ATTRIBUTE_LIST } from '../../api/api';
 
 import MyModal from '../../Pages/MyModal';
 
@@ -53,6 +53,7 @@ const TableData = ({ url, title }) => {
                 setPage={setPage}
                 page={page}
                 totalVehicles={totalVehicles}
+
             />
             <MyModal onClose={handleOnClose} visible={showModal} />
         </div>
