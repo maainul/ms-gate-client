@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import {GET_ALL_COUNTS, GET_ALL_VEHICLE_LIST, GET_ALL_VISITOR_LIST} from "../api/api";
 
 import Sidebar from './../components/layout/Sidebar';
 import Cards from './../components/layout/Cards';
@@ -9,13 +11,11 @@ import BarChart from '../components/charts/BarChart';
 import PieChart from './../components/charts/PieChart';
 import LineChart from '../components/charts/LineChart';
 import RadialBar from '../components/charts/RadialBar';
-
-
-
-import {GET_ALL_COUNTS, GET_ALL_VEHICLE_LIST, GET_ALL_VISITOR_LIST} from "../api/api";
 import {VisitorTable} from "../components/table/VisitorTable";
 import {VehicleTable} from "../components/table/VehicleTable";
-import axios from 'axios';
+
+
+
 
 
 
