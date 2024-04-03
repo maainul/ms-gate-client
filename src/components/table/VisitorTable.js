@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Pagination from "../layout/Pagination";
 import {Link} from "react-router-dom";
+import { ViewVisitorModal } from "../modal/ViewVisitorModal";
 
 export const VisitorTable = ({url}) =>{
 
@@ -13,7 +14,7 @@ export const VisitorTable = ({url}) =>{
         { label: "LAST VISIT DATE", key: "updatedAt" },
     ];
 
-    const [visitor,setVisitor] = useState([])
+   
 
     // Pagination
     const [page,setPage] = useState('1')
@@ -21,6 +22,22 @@ export const VisitorTable = ({url}) =>{
     const [numberOfPage,setNumberOfPage] = useState(2)
     const [currentPageData,setCurrentPageData] = useState((1))
     const [totalData,setTotalData] = useState(0)
+    const [visitor,setVisitor] = useState([])
+
+
+    // View Modal Show
+    const[showModal,setShowModal] = useState(false)
+    const handleOnClose = ()=> setShowModal(false)
+    const [selectedRow,setSelectedRow] = useState(null)
+
+
+    const handleViewClick = (rowData) =>{
+        setSelectedRow(rowData)
+        setShowModal(true)
+    }
+
+
+
 
     useEffect(() => {
         const fetchVisitorList = async () =>{
@@ -65,7 +82,7 @@ export const VisitorTable = ({url}) =>{
                                 <td className={`${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-gray-700 whitespace-nowrap`}>
                                     <Link to={`/edit/${row._id}`} 
                                           className="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg bg-opacity-50 mr-2 hover:bg-yellow-400">Edit</Link>
-                                    <Link to={`/view/${row._id}`}
+                                    <Link onClick={() => handleViewClick(row)}
                                           className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50 mr-2 hover:bg-green-400">View</Link>
                                     <Link to={`/delete/${row._id}`}
                                           className="p-1.5 text-xs font-medium uppercase tracking-wider text-orange-800 bg-orange-200 rounded-lg bg-opacity-50 hover:bg-orange-400">Delete</Link>
@@ -78,6 +95,8 @@ export const VisitorTable = ({url}) =>{
                 }
                 </tbody>
                 </table>
+                <ViewVisitorModal onClose={handleOnClose} visible={showModal} data={selectedRow} />
+
             </div>
                 <Pagination
                     numberOfPage={numberOfPage}
