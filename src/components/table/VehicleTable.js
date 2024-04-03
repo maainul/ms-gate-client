@@ -3,17 +3,18 @@ import axios from "axios";
 import Pagination from "../layout/Pagination";
 import {Link} from "react-router-dom";
 
-export const VisitorTable = ({url}) =>{
+export const VehicleTable = ({url}) =>{
 
     // Table Structure
-    const visitorHeaders = [
-        { label: "VISITOR NAME", key: "name" },
-        { label: "MOBILE NUMBER", key: "mobileNumber" },
-        { label: "REFERENCE PEOPLE", key: "referencePeople" },
-        { label: "LAST VISIT DATE", key: "updatedAt" },
-    ];
+    const vehicleHeaders = [
+        {label:"Vehicle Name",key:"vehicle.name"},
+        {label:"Color",key:"vehicle.color"},
+        {label:"Model",key:"vehicle.model"},
+        {label:"Number Plate",key:"vehicle.numberPlate"},
+        {label:"Created At",key:"createdAt"},
+    ]
 
-    const [visitor,setVisitor] = useState([])
+    const [vehicle,setVehicle] = useState([])
 
     // Pagination
     const [page,setPage] = useState('1')
@@ -23,45 +24,45 @@ export const VisitorTable = ({url}) =>{
     const [totalData,setTotalData] = useState(0)
 
     useEffect(() => {
-        const fetchVisitorList = async () =>{
-            try {
+        const fetchVehicleList = async () =>{
+            try{
                 const res = await axios.get(`${url}?page=${page}&limit=${limit}`)
-                setVisitor(res.data.data.data)
+                setVehicle(res.data.data.data)
                 setCurrentPageData(res.data.data.pageDataCount)
                 setNumberOfPage(res.data.data.numberOfPage)
                 setTotalData(res.data.data.totalDataCount)
             }catch (error) {
-                console.log(error)
+               console.log(error)
             }
         };
-        fetchVisitorList()
+        fetchVehicleList()
     }, [page,limit,url]);
 
-
-    return(
+    return (
         <>
             <div>
             <div className="bg-white overflow-auto rounded-lg shadow">
                 <table className="w-full">
-                    <thead className="bg-blue-500 border-y-2 border-gray-200 text-xs text-white">
+                 <thead className="bg-blue-500 border-y-2 border-gray-200 text-xs text-white">
                         <tr className="">
                             <th className="p-3 font-semibold tracking-wide text-left w-20 ">Sl</th>
-                            {visitorHeaders.map((header, index) => (
-                                <th key={index} className="p-3 font-semibold tracking-wide text-left">{header.label}</th>
+                            {vehicleHeaders.map((header, index) => (
+                                <th key={index} className="p-3 font-semibold tracking-wide text-left uppercase">{header.label}</th>
                             ))}
                             <th className="p-3 font-semibold tracking-wide text-left">Action</th>
                         </tr>
                     </thead>
                 <tbody>
                 {
-                    visitor.length > 0 ? (
-                        visitor.map((row, rowIndex) => (
-                            <tr className="" key={rowIndex}>
-                               <td className={`font-bold ${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-blue-600` }>{rowIndex + 1}</td>
-                                {visitorHeaders.map((header, colIndex) => (
-                                    <td key={colIndex} className={`${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-gray-700 whitespace-nowrap`}>
-                                        {row[header.key]}</td>
-                                ))}
+                    vehicle.length > 0 ? (
+                        vehicle.map((row, rowIndex) => (
+                            <tr className={`${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm` } key={rowIndex}>
+                                <td className={`font-bold ${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-blue-600` }>{rowIndex + 1}</td>
+                                <td>{row.vehicle.name}</td>
+                                <td>{row.vehicle.color}</td>
+                                <td>{row.vehicle.model}</td>
+                                <td>{row.vehicle.numberPlate}</td>
+                                <td>{row.createdAt}</td>
                                 <td className={`${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-gray-700 whitespace-nowrap`}>
                                     <Link to={`/edit/${row._id}`} 
                                           className="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg bg-opacity-50 mr-2 hover:bg-yellow-400">Edit</Link>
@@ -79,15 +80,15 @@ export const VisitorTable = ({url}) =>{
                 </tbody>
                 </table>
             </div>
-                <Pagination
-                    numberOfPage={numberOfPage}
-                    setPage={setPage}
-                    page={page}
-                    totalData={totalData}
-                    currentPageData={currentPageData}
-                />
+            <Pagination
+                numberOfPage={numberOfPage}
+                setPage={setPage}
+                page={page}
+                totalData={totalData}
+                currentPageData={currentPageData}
+            />
             </div>
-
         </>
     )
+
 }
