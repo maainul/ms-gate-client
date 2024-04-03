@@ -14,7 +14,7 @@ const LogoAndCompanyTitle = () => {
             >
                 <div className='flex gap-3'>
                      <img src={logo} className="w-6" alt="Logo" />
-                    <span className="font-bold text-xl text-blue-600 text-center">GAC</span>
+                    <span className="font-bold text-xl text-blue-600 text-center">ADMIN</span>
                 </div>
                 <FontAwesomeIcon icon={faBars} className="text-xl text-gray-500" />
             </Link>
