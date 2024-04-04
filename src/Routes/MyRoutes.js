@@ -6,13 +6,12 @@ import VehicleAnalytics from "../Pages/VehicleAnalytics"
 import AddVisitor from "../Pages/AddVisitor"
 import VisitorList from "../Pages/VisitorList"
 import VisitorAnalytics from "../Pages/VisitorAnalytics"
-import TestPage from "../Pages/TestPage"
 
 const MyRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<TestPage />} />
-            <Route path="/gac/home" element={<HomePage />} />
+
+            <Route path="/" element={<HomePage />} />
             <Route path="/gac/vehicle/add" element={<AddVehicle />} />
             <Route path="/gac/vehicle/list" element={<VehicleEntryList />} />
             <Route path="/gac/vehicle/analytics" element={<VehicleAnalytics />} />
