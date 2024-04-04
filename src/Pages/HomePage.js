@@ -52,7 +52,7 @@ const HomePage = () => {
 
     return (
 
-        <div>
+        <div className=''>
             <div className="flex min-h-screen bg-gray-100 text-gray-500">
                 {/* Sidebar OR Left Bar of Index Page */}
                 <Sidebar />
@@ -74,22 +74,17 @@ const HomePage = () => {
                     />
 
                     {/* Charts */}
-                    <div className='ml-10 mr-10 mt-10 h-[350px] grid  gap-4 xs:grid-cols-1 sm:grid-cols-1'>
+                    <div className='ml-10 mr-10 mt-10 h-[350px] grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
                         <BarChart isDashboard={true} />
                         <PieChart isDashboard={true} />
-                    </div>
-
-                    <div className='ml-10 mr-10 mt-10 h-[350px] grid xs:grid-cols-1 sm:grid-cols-1 gap-4'>
                         <RadialBar isDashboard={true} />
                         <LineChart isDashboard={true} />
-                    </div>
 
-                    {/* Tables of Landing Page */}
-                    <div className="relative overflow-x-auto p-10 grid xs:grid-cols-1 sm:grid-cols-1 gap-4">
+                    </div>
+                    <div className='grid grid-cols-2 mx-10 gap-4 mt-10'>
                         <VisitorTable url={GET_ALL_VISITOR_LIST} />
                         <VehicleTable url={GET_ALL_VEHICLE_LIST} />
                     </div>
-
                 </div>
             </div>
         </div >

@@ -6,7 +6,7 @@ import { ReactComponent as ViewIcon } from '../../img/eye-regular.svg';
 
 const Cards = ({ totalVehicles, totalVisitors, totalVisitorToday, visitorTotalCurrentMonth, currentMonth, currentYear, vehicleTodayTotal, vehicleTotalCurrentMonth }) => {
     return (
-        <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 ">
+        <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 px-10">
             <Card
                 title={"Total Vehicles"}
                 icon={<CarIcon className="w-9 h-9 p-2 rounded-2xl text-gray-300 bg-green-200 fill-green-400" />}
