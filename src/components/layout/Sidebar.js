@@ -4,7 +4,7 @@ import DropDownMenu from './DropDownMenu';
 
 const Sidebar = () => {
     return (
-        <div className="w-64 bg-white hidden">
+        <div className="w-64 bg-white">
             <LogoAndCompanyTitle />
             <DropDownMenu />
         </div>
