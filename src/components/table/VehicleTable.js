@@ -4,6 +4,8 @@ import Pagination from "../layout/Pagination";
 import { Link } from "react-router-dom";
 import { ViewVehicleModal } from "../modal/ViewVehicleModal";
 import LimitDropdown from "../dropDowns/LimitDropdown";
+import {DeleteVehicleModal} from "../modal/DeleteVehicleModal";
+import {DeleteVisitorModal} from "../modal/DeleteVisitorModal";
 
 export const VehicleTable = ({ url }) => {
 
@@ -36,6 +38,16 @@ export const VehicleTable = ({ url }) => {
         setSelectedRow(rowData)
         setShowModal(true)
     }
+
+    // Delete Modal
+    const[isDeleteModalVisible,setIsDeleteModalVisible] = useState(false)
+    const handleDeleteOnClose = () => setIsDeleteModalVisible(false)
+    const handleDeleteClick = (rowData) =>{
+        setSelectedRow(prevData => {return rowData})
+        setIsDeleteModalVisible(true)
+    }
+
+
 
     useEffect(() => {
         const fetchVehicleList = async () => {
@@ -79,12 +91,12 @@ export const VehicleTable = ({ url }) => {
                                             <td>{row.vehicle.numberPlate}</td>
                                             <td>{row.createdAt}</td>
                                             <td className={`${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-gray-700 whitespace-nowrap`}>
-                                                <Link to={`/edit/${row._id}`}
-                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg bg-opacity-50 mr-2 hover:bg-yellow-400">Edit</Link>
-                                                <Link onClick={() => handleViewClick(row)}
-                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50 mr-2 hover:bg-green-400">View</Link>
-                                                <Link to={`/delete/${row._id}`}
-                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-orange-800 bg-orange-200 rounded-lg bg-opacity-50 hover:bg-orange-400">Delete</Link>
+                                                <button to={`/edit/${row._id}`}
+                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg bg-opacity-50 mr-2 hover:bg-yellow-400">Edit</button>
+                                                <button onClick={() => handleViewClick(row)}
+                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50 mr-2 hover:bg-green-400">View</button>
+                                                <button onClick={() => handleDeleteClick(row)}
+                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-orange-800 bg-orange-200 rounded-lg bg-opacity-50 hover:bg-orange-400">Delete</button>
                                             </td>
                                         </tr>
                                     ))
@@ -95,6 +107,8 @@ export const VehicleTable = ({ url }) => {
                         </tbody>
                     </table>
                     <ViewVehicleModal onClose={handleOnClose} visible={showModal} data={selectedRow} />
+                    <DeleteVehicleModal onClose={handleDeleteOnClose} visible={isDeleteModalVisible} data={selectedRow} setVehicle={setVehicle} />
+
                 </div>
                 <Pagination
                     numberOfPage={numberOfPage}
