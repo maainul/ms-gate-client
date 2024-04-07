@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "../layout/Pagination";
-import { Link } from "react-router-dom";
 import { ViewVisitorModal } from "../modal/ViewVisitorModal";
 import LimitDropdown from "../dropDowns/LimitDropdown";
+import {DeleteVisitorModal} from "../modal/DeleteVisitorModal";
 
 export const VisitorTable = ({ url }) => {
 
@@ -26,18 +26,25 @@ export const VisitorTable = ({ url }) => {
     const [totalData, setTotalData] = useState(0)
 
 
-
     // View Modal Show
-    const [showModal, setShowModal] = useState(false)
-    const handleOnClose = () => setShowModal(false)
     const [selectedRow, setSelectedRow] = useState(null)
-
-
+    const [showModal, setShowModal] = useState(false)
+    const handleViewOnClose = () => setShowModal(false)
     const handleViewClick = (rowData) => {
         setSelectedRow(rowData)
         setShowModal(true)
     }
 
+   // Delete Modal
+    const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+    const handleDeleteOnClose = () => setIsDeleteModalVisible(false)
+    const handleDeleteClick = (rowData) => {
+        setSelectedRow(prevData => {return rowData});
+        setIsDeleteModalVisible(true)
+    };
+
+
+    // Fetch Visitor Data
     useEffect(() => {
         const fetchVisitorList = async () => {
             try {
@@ -57,9 +64,11 @@ export const VisitorTable = ({ url }) => {
     return (
         <>
             <div>
-                <LimitDropdown limit={limit} setLimit={setLimit} />
-                <div className="bg-white overflow-auto rounded-lg shadow">
-                    <table className="w-full">
+                <div className="px-4 my-4">
+                    <LimitDropdown limit={limit} setLimit={setLimit} />
+                </div>
+                <div className="bg-white overflow-auto rounded-lg shadow px-4">
+                    <table className="w-full p-10">
                         <thead className="bg-blue-500 border-y-2 border-gray-200 text-xs text-white">
                             <tr className="">
                                 <th className="p-3 font-semibold tracking-wide text-left w-20 ">Sl</th>
@@ -80,12 +89,12 @@ export const VisitorTable = ({ url }) => {
                                                     {row[header.key]}</td>
                                             ))}
                                             <td className={`${rowIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-3 text-sm text-gray-700 whitespace-nowrap`}>
-                                                <Link to={`/edit/${row._id}`}
-                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg bg-opacity-50 mr-2 hover:bg-yellow-400">Edit</Link>
-                                                <Link onClick={() => handleViewClick(row)}
-                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50 mr-2 hover:bg-green-400">View</Link>
-                                                <Link to={`/delete/${row._id}`}
-                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-orange-800 bg-orange-200 rounded-lg bg-opacity-50 hover:bg-orange-400">Delete</Link>
+                                                <button
+                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-yellow-800 bg-yellow-200 rounded-lg bg-opacity-50 mr-2 hover:bg-yellow-400">Edit</button>
+                                                <button onClick={() => handleViewClick(row)}
+                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50 mr-2 hover:bg-green-400">View</button>
+                                                <button onClick={() => handleDeleteClick(row)}
+                                                    className="p-1.5 text-xs font-medium uppercase tracking-wider text-orange-800 bg-orange-200 rounded-lg bg-opacity-50 hover:bg-orange-400">Delete</button>
                                             </td>
                                         </tr>
                                     ))
@@ -95,7 +104,8 @@ export const VisitorTable = ({ url }) => {
                             }
                         </tbody>
                     </table>
-                    <ViewVisitorModal onClose={handleOnClose} visible={showModal} data={selectedRow} />
+                    <ViewVisitorModal onClose={handleViewOnClose} visible={showModal} data={selectedRow} />
+                    <DeleteVisitorModal onClose={handleDeleteOnClose} visible={isDeleteModalVisible} data={selectedRow} setVisitor={setVisitor}/>
 
                 </div>
                 <Pagination

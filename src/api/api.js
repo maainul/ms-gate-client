@@ -7,6 +7,9 @@ export const CREATE_VEHICLE = `${process.env.REACT_APP_API_URL}v1/vehicle/create
 
 // VISITOR
 export const CREATE_VISITOR = `${process.env.REACT_APP_API_URL}v1/visitor/create`
+export const UPDATE_VISITOR = `${process.env.REACT_APP_API_URL}v1/visitor/`
+export const DELETE_VISITOR = `${process.env.REACT_APP_API_URL}v1/visitor/`
+export const GET_VISITOR = `${process.env.REACT_APP_API_URL}v1/visitor/`
 export const GET_ALL_VISITOR_LIST = `${process.env.REACT_APP_API_URL}v1/visitor/list`
 
 // HOME PAGE

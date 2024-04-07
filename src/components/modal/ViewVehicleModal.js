@@ -49,7 +49,6 @@ const VisitorDetails = ({ visitors }) => {
 };
 
 export const ViewVehicleModal = ({ visible, onClose, data }) => {
-    console.log(data)
     const handleOnClose = (e) => { if (e.target.id === "container") onClose() }
     if (!visible) return null
     return (

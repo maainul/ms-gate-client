@@ -74,9 +74,11 @@ const HomePage = () => {
                     />
 
                     {/* Charts */}
-                    <div className='ml-10 mr-10 mt-10 h-[350px] grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+                    <div className='ml-10 mr-10 mt-10 h-[350px] grid gap-4 sm:grid-cols-1 md:grid-cols-2'>
                         <BarChart isDashboard={true} />
                         <PieChart isDashboard={true} />
+                    </div>
+                    <div className='ml-10 mr-10 mt-10 h-[350px] grid gap-4 sm:grid-cols-1 md:grid-cols-2'>
                         <RadialBar isDashboard={true} />
                         <LineChart isDashboard={true} />
 

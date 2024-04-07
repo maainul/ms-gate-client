@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextArea = ({ title, name, id, borderColor, placeholder, register, options }) => {
+const TextArea = ({ title, name, id, borderColor, placeholder }) => {
     return (
         <div className="col-span-full mt-2">
             <div className='flex items-center gap-3'>
@@ -14,7 +14,6 @@ const TextArea = ({ title, name, id, borderColor, placeholder, register, options
                     id={id}
                     name={name}
                     rows={3}
-                    {...register(name, options)}
                     className={`${borderColor} w-full rounded-md px-2 py-1.5 outline-none placeholder:text-gray-300`}
                     placeholder={placeholder}
                 />
