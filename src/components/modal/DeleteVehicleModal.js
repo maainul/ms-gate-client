@@ -3,7 +3,7 @@ import {DELETE_VEHICLE} from "../../api/api";
 import { ReactComponent as CloseIcon } from '../../img/xmark-solid.svg';
 
 
-export const DeleteVehicleModal = ({ visible, onClose, data,setVehicle }) => {
+export const DeleteVehicleModal = ({ visible, onClose, data,setVehicle,onUpdatePagination }) => {
 
     const deleteData = async (data) => {
         console.log(data)
@@ -11,6 +11,7 @@ export const DeleteVehicleModal = ({ visible, onClose, data,setVehicle }) => {
             await axios.delete(DELETE_VEHICLE+`${data._id}`,data)
             setVehicle(prevVehicle => prevVehicle.filter(vehicle => vehicle._id !== data._id));
             onClose()
+            onUpdatePagination()
         }catch (error) {
             console.log(error)
         }

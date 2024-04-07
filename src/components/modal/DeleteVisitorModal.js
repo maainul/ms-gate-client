@@ -3,7 +3,7 @@ import {DELETE_VISITOR} from "../../api/api";
 import { ReactComponent as CloseIcon } from '../../img/xmark-solid.svg';
 
 
-export const DeleteVisitorModal = ({ visible, onClose, data,setVisitor }) => {
+export const DeleteVisitorModal = ({ visible, onClose, data,setVisitor,onUpdatePagination  }) => {
 
     const deleteData = async (data) => {
         console.log(data)
@@ -11,7 +11,7 @@ export const DeleteVisitorModal = ({ visible, onClose, data,setVisitor }) => {
             await axios.delete(DELETE_VISITOR+`${data._id}`,data)
             setVisitor(prevVisitor => prevVisitor.filter(visitor => visitor._id !== data._id));
             onClose()
-
+            onUpdatePagination()
         }catch (error) {
             console.log(error)
         }

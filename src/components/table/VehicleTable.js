@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "../layout/Pagination";
-import { Link } from "react-router-dom";
 import { ViewVehicleModal } from "../modal/ViewVehicleModal";
 import LimitDropdown from "../dropDowns/LimitDropdown";
 import {DeleteVehicleModal} from "../modal/DeleteVehicleModal";
-import {DeleteVisitorModal} from "../modal/DeleteVisitorModal";
 
 export const VehicleTable = ({ url }) => {
 
@@ -47,7 +45,20 @@ export const VehicleTable = ({ url }) => {
         setIsDeleteModalVisible(true)
     }
 
-
+    const updatePaginationAfterDelete = () =>{
+        // Calculate new total data count after deletion
+        const newTotalData = totalData -1
+        const newCurrentPageData = currentPageData -1
+        // Calculate new number of pages after deletion
+        const newNumberOfPage = Math.ceil(newTotalData / limit)
+        //update pagination state variable
+        setTotalData(newTotalData)
+        setCurrentPageData(newCurrentPageData)
+        setNumberOfPage(newNumberOfPage)
+        if(page > newNumberOfPage){
+            setPage(String(newNumberOfPage))
+        }
+    }
 
     useEffect(() => {
         const fetchVehicleList = async () => {
@@ -107,7 +118,13 @@ export const VehicleTable = ({ url }) => {
                         </tbody>
                     </table>
                     <ViewVehicleModal onClose={handleOnClose} visible={showModal} data={selectedRow} />
-                    <DeleteVehicleModal onClose={handleDeleteOnClose} visible={isDeleteModalVisible} data={selectedRow} setVehicle={setVehicle} />
+                    <DeleteVehicleModal
+                        onClose={handleDeleteOnClose}
+                        visible={isDeleteModalVisible}
+                        data={selectedRow}
+                        setVehicle={setVehicle}
+                        onUpdatePagination = {updatePaginationAfterDelete}
+                    />
 
                 </div>
                 <Pagination

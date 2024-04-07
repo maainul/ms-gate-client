@@ -21,8 +21,8 @@ export const VisitorTable = ({ url }) => {
     // Pagination
     const [page, setPage] = useState('1')
     const [limit, setLimit] = useState('10')
-    const [numberOfPage, setNumberOfPage] = useState(2)
-    const [currentPageData, setCurrentPageData] = useState((1))
+    const [numberOfPage, setNumberOfPage] = useState(0)
+    const [currentPageData, setCurrentPageData] = useState(0)
     const [totalData, setTotalData] = useState(0)
 
 
@@ -42,6 +42,22 @@ export const VisitorTable = ({ url }) => {
         setSelectedRow(prevData => {return rowData});
         setIsDeleteModalVisible(true)
     };
+
+    // Function to update pagination after deletion
+    const updatePaginationAfterDelete = () =>{
+        // Calculate new total data count after deletion
+        const newTotalData = totalData -1
+        const newCurrentPageData = currentPageData -1
+        // Calculate new number of pages after deletion
+        const newNumberOfPage = Math.ceil(newTotalData / limit)
+        //update pagination state variable
+        setTotalData(newTotalData)
+        setCurrentPageData(newCurrentPageData)
+        setNumberOfPage(newNumberOfPage)
+        if(page > newNumberOfPage){
+            setPage(String(newNumberOfPage))
+        }
+    }
 
 
     // Fetch Visitor Data
@@ -105,7 +121,13 @@ export const VisitorTable = ({ url }) => {
                         </tbody>
                     </table>
                     <ViewVisitorModal onClose={handleViewOnClose} visible={showModal} data={selectedRow} />
-                    <DeleteVisitorModal onClose={handleDeleteOnClose} visible={isDeleteModalVisible} data={selectedRow} setVisitor={setVisitor}/>
+                    <DeleteVisitorModal
+                        onClose={handleDeleteOnClose}
+                        visible={isDeleteModalVisible}
+                        data={selectedRow}
+                        setVisitor={setVisitor}
+                        onUpdatePagination = {updatePaginationAfterDelete}
+                    />
 
                 </div>
                 <Pagination
@@ -114,6 +136,7 @@ export const VisitorTable = ({ url }) => {
                     page={page}
                     totalData={totalData}
                     currentPageData={currentPageData}
+
                 />
             </div>
 
