@@ -21,8 +21,8 @@ export const VisitorTable = ({ url }) => {
     // Pagination
     const [page, setPage] = useState('1')
     const [limit, setLimit] = useState('10')
-    const [numberOfPage, setNumberOfPage] = useState(0)
-    const [currentPageData, setCurrentPageData] = useState(0)
+    const [numberOfPage, setNumberOfPage] = useState(1)
+    const [currentPageData, setCurrentPageData] = useState(1)
     const [totalData, setTotalData] = useState(0)
 
 
@@ -47,13 +47,13 @@ export const VisitorTable = ({ url }) => {
     const updatePaginationAfterDelete = () =>{
         // Calculate new total data count after deletion
         const newTotalData = totalData -1
-        const newCurrentPageData = currentPageData -1
         // Calculate new number of pages after deletion
         const newNumberOfPage = Math.ceil(newTotalData / limit)
+        const newCurrentTotal = currentPageData -1
         //update pagination state variable
         setTotalData(newTotalData)
-        setCurrentPageData(newCurrentPageData)
         setNumberOfPage(newNumberOfPage)
+        setCurrentPageData(newCurrentTotal)
         if(page > newNumberOfPage){
             setPage(String(newNumberOfPage))
         }
@@ -124,10 +124,8 @@ export const VisitorTable = ({ url }) => {
                     <DeleteVisitorModal
                         onClose={handleDeleteOnClose}
                         visible={isDeleteModalVisible}
-                        data={selectedRow}
-                        setVisitor={setVisitor}
-                        onUpdatePagination = {updatePaginationAfterDelete}
-                    />
+                        data={selectedRow} setVisitor={setVisitor}
+                        onUpdatePagination = {updatePaginationAfterDelete}/>
 
                 </div>
                 <Pagination
