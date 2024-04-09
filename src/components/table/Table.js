@@ -1,7 +1,7 @@
 // import {DDMMMYYYY} from "../../utils/DateFormat";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import { ViewVisitorModal } from "../modal/ViewVisitorModal";
+import { ViewVisitorModal } from "../modal/visitor/ViewVisitorModal";
 
 export const Table = ({ tblHeader, data }) => {
     const [showModal, setShowModal] = useState(false)

@@ -1,5 +1,5 @@
-import { ReactComponent as CloseIcon } from '../../img/xmark-solid.svg';
-import { DDMMMYYYYHHMM } from '../../utils/DateFormat';
+import { ReactComponent as CloseIcon } from '../../../img/xmark-solid.svg';
+import { DDMMMYYYYHHMM } from '../../../utils/DateFormat';
 
 
 export const ViewVisitorModal = ({ visible, onClose, data }) => {

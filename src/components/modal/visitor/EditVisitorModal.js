@@ -1,4 +1,4 @@
-import { ReactComponent as CloseIcon } from '../../img/xmark-solid.svg';
+import { ReactComponent as CloseIcon } from '../../../img/xmark-solid.svg';
 import { useState } from 'react';
 
 export const EditVisitorModal = ({ data, onClose }) => { // Pass onClose function as a prop

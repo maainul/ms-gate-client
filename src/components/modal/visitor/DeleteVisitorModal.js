@@ -1,6 +1,6 @@
 import axios from "axios";
-import {DELETE_VISITOR} from "../../api/api";
-import { ReactComponent as CloseIcon } from '../../img/xmark-solid.svg';
+import {DELETE_VISITOR} from "../../../api/api";
+import { ReactComponent as CloseIcon } from '../../../img/xmark-solid.svg';
 
 
 export const DeleteVisitorModal = ({ visible, onClose, data,setVisitor,onUpdatePagination  }) => {

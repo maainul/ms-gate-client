@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Pagination from "../layout/Pagination";
-import { ViewVisitorModal } from "../modal/ViewVisitorModal";
+import { ViewVisitorModal } from "../modal/visitor/ViewVisitorModal";
 import LimitDropdown from "../dropDowns/LimitDropdown";
-import {DeleteVisitorModal} from "../modal/DeleteVisitorModal";
+import {DeleteVisitorModal} from "../modal/visitor/DeleteVisitorModal";
 
 export const VisitorTable = ({ url }) => {
 

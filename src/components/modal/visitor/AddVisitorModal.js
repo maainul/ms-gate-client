@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { CREATE_VISITOR } from '../api/api';
-import Input from "../components/layout/Input";
-import { ReactComponent as CloseIcon } from '../img/xmark-solid.svg';
 
-const VisitorModal = ({ visible, onClose }) => {
+import { ReactComponent as CloseIcon } from '../../../img/xmark-solid.svg';
+import {CREATE_VISITOR} from "../../../api/api";
+import Input from "../../layout/Input";
 
+const AddVisitorModal = ({ visible, onClose,updateVisitorList  }) => {
+    console.log("###############################################")
+    console.log(updateVisitorList)
+    console.log("###############################################")
     const [name, setName] = useState('')
     const [mobileNumber, setMobileNumber] = useState('')
     const [purpose, setPurpose] = useState('')
@@ -19,6 +22,7 @@ const VisitorModal = ({ visible, onClose }) => {
             });
             console.log(res)
             onClose(); // Close the modal after successful submission
+            updateVisitorList()
         } catch (error) {
             console.log(error);
         }
@@ -82,4 +86,4 @@ const VisitorModal = ({ visible, onClose }) => {
     )
 }
 
-export default VisitorModal
+export default AddVisitorModal
