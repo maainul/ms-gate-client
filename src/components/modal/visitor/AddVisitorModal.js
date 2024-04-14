@@ -6,19 +6,14 @@ import {CREATE_VISITOR} from "../../../api/api";
 import Input from "../../layout/Input";
 
 const AddVisitorModal = ({ visible, onClose,updateVisitorList  }) => {
-    console.log("###############################################")
-    console.log(updateVisitorList)
-    console.log("###############################################")
     const [name, setName] = useState('')
     const [mobileNumber, setMobileNumber] = useState('')
-    const [purpose, setPurpose] = useState('')
-    const [referencePeople, setReferencePeople] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const res = await axios.post(CREATE_VISITOR, {
-                name, mobileNumber, purpose, referencePeople
+                name, mobileNumber
             });
             console.log(res)
             onClose(); // Close the modal after successful submission
@@ -55,20 +50,6 @@ const AddVisitorModal = ({ visible, onClose,updateVisitorList  }) => {
                                 type="text"
                                 value={mobileNumber}
                                 onChange={(value) => setMobileNumber(value)}
-                            />
-                            <Input
-                                title="Reference People"
-                                borderColor="border-2 border-lime-300 focus:border-lime-600"
-                                type="text"
-                                value={referencePeople}
-                                onChange={(value) => setReferencePeople(value)}
-                            />
-                            <Input
-                                title="Purpose"
-                                borderColor="border-2 border-lime-300 focus:border-lime-600"
-                                type="text"
-                                value={purpose}
-                                onChange={(value) => { setPurpose(value) }}
                             />
                         </div>
                     </div >

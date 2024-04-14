@@ -22,7 +22,6 @@ const AddVisitor = () => {
                                 <InputBox title={"Mobile Number"} name={"mobileNumber"} id={"mobileNumber"} borderColor={"border-2 border-lime-300 focus:border-lime-600"} type={"text"} />
                                 <InputBox title={"Gender"} name={"gender"} id={"gender"} borderColor={"border-2 border-lime-300 focus:border-lime-600"} type={"text"} />
                             </div>
-
                         </div>
                         <div className="flex justify-center my-10 gap-4">
                             <button type="button" className="text-sm font-semibold leading-6 text-white w-72 bg-rose-500 rounded-sm shadow-sm hover:bg-rose-400 h-10" >

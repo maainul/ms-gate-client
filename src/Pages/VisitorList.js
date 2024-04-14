@@ -18,7 +18,6 @@ const VisitorList = () => {
     const visitorHeaders = [
         { label: "VISITOR NAME", key: "name" },
         { label: "MOBILE NUMBER", key: "mobileNumber" },
-        { label: "REFERENCE PEOPLE", key: "referencePeople" },
         { label: "LAST VISIT DATE", key: "updatedAt" },
     ];
     // Pagination
