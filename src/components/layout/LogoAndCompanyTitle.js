@@ -10,7 +10,7 @@ const LogoAndCompanyTitle = () => {
         <>
             <Link
                 className="px-5 py-6 cursor-pointer items-center border-b-2 border-b-gray-200 justify-between flex gap-2 mb-6 bg-white"
-                to={"/gac/home"}
+                to={"/"}
             >
                 <div className='flex gap-3'>
                      <img src={logo} className="w-6" alt="Logo" />

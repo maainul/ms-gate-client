@@ -4,7 +4,7 @@ import { ReactComponent as UserIcon } from '../../img/user-group-solid.svg';
 import { ReactComponent as GurardIcon } from '../../img/person-military-pointing-solid.svg';
 import { ReactComponent as ViewIcon } from '../../img/eye-regular.svg';
 
-const Cards = ({ totalVehicles, totalVisitors, totalVisitorToday, visitorTotalCurrentMonth, currentMonth, currentYear, vehicleTodayTotal, vehicleTotalCurrentMonth }) => {
+const Cards = ({ totalVehicles, totalVisitors, totalVisitorToday, visitorTotalCurrentMonth, currentMonth, currentYear, vehicleTodayTotal, vehicleTotalCurrentMonth,currentYearVisitorTotal,currentYearVehicleTotal }) => {
     return (
         <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 px-10">
             <Card
@@ -60,7 +60,7 @@ const Cards = ({ totalVehicles, totalVisitors, totalVisitorToday, visitorTotalCu
             <Card
                 title={`Total Visitor(${currentMonth})`}
                 icon={<UserIcon className="w-9 p-2 h-9 rounded-2xl text-gray-300 bg-lime-100 fill-lime-400" />}
-                totalAmount={500}
+                totalAmount={visitorTotalCurrentMonth}
                 hoverColor={'hover:bg-lime-50'}
                 textColor={'text-lime-500'}
                 bottomIcon={<ViewIcon className="w-8 p-2 hover:cursor-pointer hover:rounded-2xl hover:text-gray-300 hover:bg-lime-200 fill-lime-400" />}
@@ -76,7 +76,7 @@ const Cards = ({ totalVehicles, totalVisitors, totalVisitorToday, visitorTotalCu
             <Card
                 title={`Total Vehicle(${currentYear})`}
                 icon={<UserIcon className="w-9 h-9 p-2 rounded-2xl text-gray-300 bg-purple-200 fill-purple-400" />}
-                totalAmount={visitorTotalCurrentMonth}
+                totalAmount={currentYearVehicleTotal}
                 hoverColor={'hover:bg-purple-50'}
                 textColor={'text-purple-500'}
                 bottomIcon={<ViewIcon className="w-8 p-2 hover:cursor-pointer hover:rounded-2xl hover:text-gray-300 hover:bg-purple-200 fill-purple-400" />}
@@ -84,7 +84,7 @@ const Cards = ({ totalVehicles, totalVisitors, totalVisitorToday, visitorTotalCu
             <Card
                 title={`Total Visitors(${currentYear})`}
                 icon={<UserIcon className="w-9 p-2 h-9 rounded-2xl text-gray-300 bg-orange-200 fill-orange-400" />}
-                totalAmount={totalVisitorToday}
+                totalAmount={currentYearVisitorTotal}
                 hoverColor={'hover:bg-orange-50'}
                 textColor={'text-orange-500'}
                 bottomIcon={<ViewIcon className="w-8 p-2 hover:cursor-pointer hover:rounded-2xl hover:text-gray-300 hover:bg-orange-200 fill-orange-400" />}

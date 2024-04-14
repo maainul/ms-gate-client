@@ -14,11 +14,6 @@ import RadialBar from '../components/charts/RadialBar';
 import { VisitorTable } from "../components/table/VisitorTable";
 import { VehicleTable } from "../components/table/VehicleTable";
 
-
-
-
-
-
 const HomePage = () => {
     const [totalVehicles, setTotalVehicles] = useState('0')
     const [totalVisitors, setTotalVisitors] = useState('0')
@@ -28,6 +23,8 @@ const HomePage = () => {
     const [currentYear, setCurrentYear] = useState('0')
     const [vehicleTodayTotal, setVehicleTodayTotal] = useState('0')
     const [vehicleTotalCurrentMonth, setVehicleTotalCurrentMonth] = useState('0')
+    const [currentYearVehicleTotal, setCurrentYearVehicleTotal] = useState('0')
+    const [currentYearVisitorTotal, setCurrentYearVisitorTotal] = useState('0')
 
 
     useEffect(() => {
@@ -43,6 +40,9 @@ const HomePage = () => {
                 setCurrentYear(res.data.data.currentYear)
                 setVehicleTodayTotal(res.data.data.vehicleTodayTotal)
                 setVehicleTotalCurrentMonth(res.data.data.vehicleTotalCurrentMonth)
+                setCurrentYearVehicleTotal(res.data.data.currentYearVehicleTotal)
+                setCurrentYearVisitorTotal(res.data.data.currentYearVisitorTotal)
+
             } catch (error) {
                 console.log(error)
             }
@@ -71,6 +71,8 @@ const HomePage = () => {
                         currentYear={currentYear}
                         vehicleTodayTotal={vehicleTodayTotal}
                         vehicleTotalCurrentMonth={vehicleTotalCurrentMonth}
+                        currentYearVehicleTotal={currentYearVehicleTotal}
+                        currentYearVisitorTotal={currentYearVisitorTotal}
                     />
 
                     {/* Charts */}

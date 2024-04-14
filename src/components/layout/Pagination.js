@@ -51,7 +51,7 @@ const Pagination = ({ numberOfPage, setPage, page, totalData,currentPageData }) 
                 </div>
                 <div className='flex justify-center items-center'>
                     <div className='text-xs  text-gray-400 px-6 py-3'>{currentPageData} of {totalData} Data</div>
-                    <img src={refresh} alt='refresh-btn' className='w-5 h-5'/>
+                    <img src={refresh} alt='refresh-btn' className='w-5 h-5 hover:cursor-pointer'/>
                 </div>
             </div>
         </>

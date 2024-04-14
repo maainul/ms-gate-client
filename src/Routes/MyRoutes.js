@@ -6,6 +6,8 @@ import VehicleAnalytics from "../Pages/VehicleAnalytics"
 import AddVisitor from "../Pages/AddVisitor"
 import VisitorList from "../Pages/VisitorList"
 import VisitorAnalytics from "../Pages/VisitorAnalytics"
+import VisitorListMonth from "../Pages/VisitorListMonth";
+import VisitorListYear from "../Pages/VisitorListYear";
 
 const MyRoutes = () => {
     return (
@@ -19,6 +21,9 @@ const MyRoutes = () => {
             <Route path="/gac/visitor/add" element={<AddVisitor />} />
             <Route path="/gac/visitor/list" element={<VisitorList />} />
             <Route path="/gac/visitor/analytics" element={<VisitorAnalytics />} />
+
+            <Route path="/gac/visitor/month" element={<VisitorListMonth />} />
+            <Route path="/gac/visitor/year" element={<VisitorListYear />} />
         </Routes>
     )
 }

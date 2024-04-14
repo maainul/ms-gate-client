@@ -3,13 +3,15 @@ import React, {useEffect, useState} from 'react';
 import Sidebar from '../components/layout/Sidebar';
 import SearchBar from '../components/layout/SearchBar';
 import { ReactComponent as PlusIcon } from '../img/plus-solid.svg';
-import {GET_ALL_VISITOR_LIST} from "../api/api";
+import {GET_ALL_VISITOR_LIST, GET_TODAY_ALL_VISITOR_LIST} from "../api/api";
 import LimitDropdown from "../components/dropDowns/LimitDropdown";
 import Pagination from "../components/layout/Pagination";
 import {DeleteVisitorModal} from "../components/modal/visitor/DeleteVisitorModal";
 import {ViewVisitorModal} from "../components/modal/visitor/ViewVisitorModal";
 import AddVisitorModal from "../components/modal/visitor/AddVisitorModal";
 import {DDMMMYYYY} from "../utils/DateFormat";
+import {TodayVisitorModal} from "../components/modal/visitor/TodayVisitorModal";
+import {Link} from "react-router-dom";
 
 const VisitorList = () => {
     // Table Structure
@@ -30,6 +32,7 @@ const VisitorList = () => {
     const [showModal, setShowModal] = useState(false)
     const [selectedRow, setSelectedRow] = useState(null)
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+    const [isTodayVisitorModalVisible,setIsTodayVisitorModalVisible]= useState(false)
 
     const handleAddClose = () =>{
         setAddModal(false)
@@ -37,6 +40,7 @@ const VisitorList = () => {
     }
     const handleViewOnClose = () => setShowModal(false)
     const handleDeleteOnClose = () => setIsDeleteModalVisible(false)
+    const handleTodayVisitorOnClose = () =>{setIsTodayVisitorModalVisible(false)}
 
     const handleAddClick = () =>{
         setAddModal(true)
@@ -80,9 +84,25 @@ const VisitorList = () => {
     };
 
     // Fetch Visitor Data
+    /* eslint-disable */
     useEffect(() => {
         fetchVisitorList()
     }, [page, limit]);
+    /* eslint-enable */
+
+    const [todayVisitor,setTodayVisitor] = useState([])
+    const handleOnClickTodayVisitorEntry = async () =>{
+        try{
+            const res = await axios.get(GET_TODAY_ALL_VISITOR_LIST)
+            setTodayVisitor(res.data.data)
+            setIsTodayVisitorModalVisible(true)
+        }catch (error){
+            console.log(error)
+        }
+    }
+
+
+
 
     return (
         <div className="flex min-h-screen bg-gray-100 text-gray-500">
@@ -98,8 +118,18 @@ const VisitorList = () => {
                                       onClick={handleAddClick}/>
                         </div>
                         <div>
-                            <div className="px-4 my-4">
+                            <div className="px-4 my-4 flex justify-between items-center bg-gray-200 mx-4">
                                 <LimitDropdown limit={limit} setLimit={setLimit}/>
+                                <div className='flex justify-between gap-4'>
+                                    <button className='bg-green-400 px-2 text-gray-700 font-semibold hover:bg-green-500' onClick={handleOnClickTodayVisitorEntry}>Today</button>
+                                    <Link className='bg-green-400 px-2 text-gray-700 font-semibold hover:bg-green-500' to="/gac/visitor/month">This Month</Link>
+                                    <Link className='bg-green-400 px-2 text-gray-700 font-semibold hover:bg-green-500' to="/gac/visitor/year">This Year</Link>
+                                </div>
+                                <div>
+                                    <button>Today</button>
+                                    <button>This Month</button>
+                                    <button>This Year</button>
+                                </div>
                             </div>
                             <div className="bg-white overflow-auto shadow px-4">
                                 <table className="w-full p-10">
@@ -161,6 +191,11 @@ const VisitorList = () => {
                                     data={selectedRow}
                                     setVisitor={setVisitor}
                                     onUpdatePagination={updatePaginationAfterDelete}
+                                />
+                                <TodayVisitorModal
+                                    onClose={handleTodayVisitorOnClose}
+                                    visible={isTodayVisitorModalVisible}
+                                    data={todayVisitor}
                                 />
                             </div>
                             <Pagination
